@@ -145,7 +145,22 @@
       io.unobserve(e.target);
     });
   },{threshold:0.12,rootMargin:'0px 0px -40px 0px'});
-  document.querySelectorAll('.reveal,.reveal-left,.reveal-right').forEach(function(el){io.observe(el)});
+  var revealEls=document.querySelectorAll('.reveal,.reveal-left,.reveal-right');
+  revealEls.forEach(function(el){io.observe(el)});
+  /* IntersectionObserver callbacks ride the rendering lifecycle, so in a preview
+     iframe or a background tab they can be late or never arrive. Reveal whatever
+     is already on screen on the next frame rather than waiting on the observer. */
+  function vh(){return window.innerHeight||document.documentElement.clientHeight}
+  function paintOnscreen(){
+    var n=0;
+    revealEls.forEach(function(el){
+      if(el.classList.contains('visible'))return;
+      var r=el.getBoundingClientRect();
+      if(r.top<vh()&&r.bottom>0){el.classList.add('visible');io.unobserve(el);n++}
+    });
+    return n;
+  }
+  requestAnimationFrame(paintOnscreen);
 
   /* stat counters */
   var statrow=document.getElementById('statrow');
@@ -166,13 +181,14 @@
     cio.observe(statrow);
   }
 
-  /* fallback: reveal everything if observers never fire */
+  /* fallback: never let copy sit invisible waiting on an observer that may not fire */
   setTimeout(function(){
+    paintOnscreen();
     if(document.querySelectorAll('.reveal.visible,.reveal-left.visible,.reveal-right.visible').length===0){
-      document.querySelectorAll('.reveal,.reveal-left,.reveal-right').forEach(function(el){el.classList.add('visible')});
+      revealEls.forEach(function(el){el.classList.add('visible')});
       document.querySelectorAll('.counter').forEach(function(el){el.textContent=el.getAttribute('data-target')||'0'});
     }
-  },3000);
+  },400);
 
   /* quote switcher */
   var qtabs=document.querySelectorAll('.qtab'),qtexts=document.querySelectorAll('.qtext');
