@@ -264,6 +264,17 @@ footer a:hover{color:#fff}
 .mini .chip{display:inline-flex;align-items:center;background:#fff;border-radius:8px;padding:7px 12px;margin-top:2px}
 .mini img.logo{height:22px;width:auto;display:block;filter:brightness(0)}
 
+/* ---- weighing grid + callout (session close) ---- */
+.qgrid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:22px;max-width:900px}
+.qcard{display:grid;grid-template-columns:auto 1fr;gap:15px;align-items:baseline;
+       background:#fff;border:1px solid var(--line);border-radius:14px;padding:19px 22px}
+.qcard .qn{font-family:'Archivo',sans-serif;font-size:25px;font-weight:700;
+           color:var(--terracotta);line-height:1}
+.qcard p{font-size:16.5px;color:#4A4744;line-height:1.5}
+.callout{margin-top:32px;max-width:74ch;border-left:3px solid var(--terracotta);
+         background:rgba(181,80,45,.06);border-radius:0 12px 12px 0;padding:17px 22px;
+         font-size:16.5px;color:#4A4744;line-height:1.6}
+@media(max-width:940px){.qgrid{grid-template-columns:1fr}}
 @media(max-width:940px){
   .steps,.tiles{grid-template-columns:1fr 1fr}
   .stats,.proc,.comm,.vote{grid-template-columns:1fr 1fr}
@@ -347,8 +358,7 @@ footer a:hover{color:#fff}
 <section id="features">
   <div class="wrap">
     <div class="eyebrow reveal">Key features</div>
-    <h2 class="reveal">What you get, in plain terms.</h2>
-    <p class="sub-h reveal">The basics</p>
+    <h2 class="reveal">Here's what you'll get in our pitch forum</h2>
     <div class="stats reveal">
       <div class="stat"><div class="v">6&ndash;10</div><div class="k">Angel investors you'll be pitching to</div></div>
       <div class="stat"><div class="v">$25K+</div><div class="k">Expected check size, per investor per deal</div></div>
@@ -376,14 +386,21 @@ footer a:hover{color:#fff}
   <div class="wrap">
     <div class="eyebrow reveal">Eligibility</div>
     <h2 class="reveal">Who can apply.</h2>
-    <p class="lede reveal">Six things we look for. You don't need all six to be perfect, but we'll ask about each one.</p>
-    <div class="tiles reveal">
-      <div class="tile"><img src="https://raw.githubusercontent.com/HAS2-phlang/ffg-vs-reference/main/public/assets/pitchforum/img-02.jpg" alt=""><div class="tb"><h3>Market</h3><p>You're a B2B company selling to nonprofits, schools, associations, foundations or social enterprises.</p></div></div>
-      <div class="tile"><img src="https://raw.githubusercontent.com/HAS2-phlang/ffg-vs-reference/main/public/assets/pitchforum/img-03.jpg" alt=""><div class="tb"><h3>Traction</h3><p>A working product with paying customers, or completed pilots with results.</p></div></div>
-      <div class="tile"><img src="https://raw.githubusercontent.com/HAS2-phlang/ffg-vs-reference/main/public/assets/pitchforum/img-04.jpg" alt=""><div class="tb"><h3>Growth stalled</h3><p>Proven product, but growth's gone flat? We look at those too.</p></div></div>
-      <div class="tile"><img src="https://raw.githubusercontent.com/HAS2-phlang/ffg-vs-reference/main/public/assets/pitchforum/img-05.jpg" alt=""><div class="tb"><h3>Measurable results</h3><p>Pilot outcomes, customer results or revenue. A forecast on its own won't do it.</p></div></div>
-      <div class="tile"><img src="https://raw.githubusercontent.com/HAS2-phlang/ffg-vs-reference/main/public/assets/pitchforum/img-06.jpg" alt=""><div class="tb"><h3>Commercial viability</h3><p>A model that can grow inside this market, and that depends on serving it.</p></div></div>
-      <div class="tile"><img src="https://raw.githubusercontent.com/HAS2-phlang/ffg-vs-reference/main/public/assets/pitchforum/img-07.jpg" alt=""><div class="tb"><h3>A defined request</h3><p>How much you're raising, who you want to meet, and what the money is for.</p></div></div>
+    <p class="lede reveal">We back B2B companies selling to nonprofits, associations, foundations, schools and social enterprises. Within that market we look for two situations, and we evaluate every company against the same four criteria.</p>
+
+    <p class="sub-h reveal">Two kinds of company we back</p>
+    <div class="tiles reveal" style="grid-template-columns:1fr 1fr;margin-top:24px">
+      <div class="tile"><img src="https://raw.githubusercontent.com/HAS2-phlang/ffg-vs-reference/main/public/assets/pitchforum/img-02.jpg" alt=""><div class="tb"><h3>Early stage, pre-seed or seed</h3><p>You have a working product and traction through paying customers or early revenue. The idea is proven. What you need is to reach the next level faster than you could on your own.</p></div></div>
+      <div class="tile"><img src="https://raw.githubusercontent.com/HAS2-phlang/ffg-vs-reference/main/public/assets/pitchforum/img-03.jpg" alt=""><div class="tb"><h3>Growth has stalled</h3><p>A proven product with real demand, but revenue has flattened. You may have raised before and not grown enough to raise again.</p></div></div>
+    </div>
+
+    <p class="sub-h reveal">What we evaluate</p>
+    <p class="lede reveal" style="margin-top:12px">All four apply to every company. The strongest candidates speak to each one clearly and honestly.</p>
+    <div class="tiles reveal" style="grid-template-columns:1fr 1fr;margin-top:24px">
+      <div class="tile"><img src="https://raw.githubusercontent.com/HAS2-phlang/ffg-vs-reference/main/public/assets/pitchforum/img-04.jpg" alt=""><div class="tb"><h3>Integrated purpose and strategy</h3><p>The mission is woven into the business model, the operations and the day-to-day decisions. Pursuing it is tied to long-term value, not bolted on as marketing.</p></div></div>
+      <div class="tile"><img src="https://raw.githubusercontent.com/HAS2-phlang/ffg-vs-reference/main/public/assets/pitchforum/img-05.jpg" alt=""><div class="tb"><h3>Measurable impact and evidence</h3><p>A clear statement of the problem and evidence that your product solves it. Pilot results, customer outcomes and real numbers count for more than projections.</p></div></div>
+      <div class="tile"><img src="https://raw.githubusercontent.com/HAS2-phlang/ffg-vs-reference/main/public/assets/pitchforum/img-06.jpg" alt=""><div class="tb"><h3>Scalability for good</h3><p>A model with real room to grow, where the impact grows with it. Show us that profit and purpose reinforce each other in your case.</p></div></div>
+      <div class="tile"><img src="https://raw.githubusercontent.com/HAS2-phlang/ffg-vs-reference/main/public/assets/pitchforum/img-07.jpg" alt=""><div class="tb"><h3>The right ask</h3><p>You know exactly what you need: the capital, the specific introductions, the expertise gaps. Founders who can name the three relationships that would change their trajectory stand out.</p></div></div>
     </div>
   </div>
 </section>
@@ -395,16 +412,27 @@ footer a:hover{color:#fff}
     <p class="lede reveal">It's the same for every company, and it's the format Rafi and Adam already run.</p>
     <div class="steps reveal">
       <div class="scard"><img src="https://raw.githubusercontent.com/HAS2-phlang/ffg-vs-reference/main/public/assets/pitchforum/img-08.jpg" alt=""><div class="sb"><div class="n">STEP 01 &middot; 10 MINUTES</div>
-        <h3>Your pitch</h3><p>Six slides: problem, solution, traction, team, gaps, the ask. Nobody interrupts.</p></div></div>
+        <h3>Your pitch</h3><p>Six slides: problem, solution, traction, team, gaps, the ask.</p></div></div>
       <div class="scard"><img src="https://raw.githubusercontent.com/HAS2-phlang/ffg-vs-reference/main/public/assets/pitchforum/img-09.jpg" alt=""><div class="sb"><div class="n">STEP 02 &middot; 10 MINUTES</div>
-        <h3>Q&amp;A</h3><p>The angels ask you directly. A moderator keeps the clock.</p></div></div>
+        <h3>Q&amp;A</h3><p>The investors ask you questions to align on where you want to take your business.</p></div></div>
       <div class="scard"><img src="https://raw.githubusercontent.com/HAS2-phlang/ffg-vs-reference/main/public/assets/pitchforum/img-10.jpg" alt=""><div class="sb"><div class="n">STEP 03 &middot; 5 MINUTES</div>
-        <h3>We deliberate</h3><p>You drop off the call. Each angel fills in a short scorecard on your pitch.</p></div></div>
+        <h3>We deliberate</h3><p>You drop off the call. Each investor discusses and weighs your pitch.</p></div></div>
       <div class="scard"><img src="https://raw.githubusercontent.com/HAS2-phlang/ffg-vs-reference/main/public/assets/pitchforum/img-11.jpg" alt=""><div class="sb"><div class="n">STEP 04 &middot; WITHIN 48 HOURS</div>
-        <h3>We get back to you</h3><p>In writing, with where you landed and why.</p></div></div>
+        <h3>We get back to you</h3><p>In writing with where the investors landed and why.</p></div></div>
     </div>
-    <p class="close reveal">The scorecard asks each angel four things: how big the problem is, how strong the product is, what the traction shows, and whether the team can pull it off. Then one more: Pass, Mentor, or Investigate.</p>
-    <p class="close reveal" style="margin-top:18px">If two or more angels pick Investigate, we set up a deeper diligence call with you. If they pick Mentor, we introduce you for a short advisory conversation. Participation in any deal is fully optional, on both sides.</p>
+    <p class="sub-h reveal">Investors mainly want to weigh</p>
+    <div class="qgrid reveal">
+      <div class="qcard"><div class="qn">1</div><p>How big is the market?</p></div>
+      <div class="qcard"><div class="qn">2</div><p>How strong is the product?</p></div>
+      <div class="qcard"><div class="qn">3</div><p>How is the traction?</p></div>
+      <div class="qcard"><div class="qn">4</div><p>Can the team in place can pull it off?</p></div>
+    </div>
+    <p class="sub-h reveal">What happens next</p>
+    <ul class="list reveal" style="margin-top:16px">
+      <li><b>If two or more angels want to proceed:</b> we set up a deeper diligence call with you.</li>
+      <li><b>If they want to mentor:</b> we set-up an alignment call.</li>
+    </ul>
+    <p class="callout reveal">We would like for you to keep in mind that you are free to decide: participation in any deal is fully optional, on both sides.</p>
   </div>
 </section>
 
