@@ -1,0 +1,143 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Application received | Foundry for Good Pitch Forum</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&amp;family=Inter:wght@400;500;600&amp;display=swap">
+<style>
+:root{
+  --navy:#16323E; --navy-deep:#0F242D; --terracotta:#B5502D; --terracotta-lt:#D9714B;
+  --terracotta-dk:#A2472A;
+  --cream:#F7F4EE; --ink:#1A1A1A; --gray:#6B6660; --line:rgba(22,50,62,.15);
+  --f-head:'Archivo',system-ui,sans-serif;
+  --f-body:'Inter',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+*::before,*::after{box-sizing:border-box}
+body{background:#fff;color:var(--ink);font-family:var(--f-body);font-size:16px;
+     line-height:1.55;-webkit-font-smoothing:antialiased}
+
+/* --- cover banner and avatar, their opening move --------------------------
+   The lockup is real text, not baked into the image. Baking it meant the type
+   was upscaled on any high-DPI screen (a 1920 CSS-px banner needs 3840 device
+   px) and object-fit:cover kept cropping it vertically. As text it stays sharp
+   at any density and scales with the viewport instead of being cropped. */
+.cover{position:relative;width:100%;height:clamp(220px,30vw,420px);
+       background:var(--navy-deep) center/cover no-repeat;overflow:hidden}
+.cover .lock{position:absolute;right:clamp(22px,4vw,90px);top:50%;
+             transform:translateY(-50%);text-align:right;
+             font-family:var(--f-head);font-variation-settings:'wdth' 62;
+             font-weight:900;line-height:.702;letter-spacing:-.015em;
+             text-transform:uppercase;margin:0}
+.cover .lock span{display:block;font-size:clamp(74px,17.7vw,271px)}
+.cover .lock .a{color:var(--cream)}
+.cover .lock .b{color:var(--terracotta-lt)}
+@media (max-width:760px){
+  .cover .lock{right:auto;left:22px;text-align:left}
+  .cover .lock span{font-size:clamp(54px,17.5vw,100px)}
+}
+.avatarwrap{max-width:1000px;margin:0 auto;padding:0 40px;position:relative}
+.avatar{width:86px;height:86px;border-radius:50%;display:block;margin-top:-43px;
+        position:relative;z-index:2;box-shadow:0 0 0 4px #fff}
+
+.wrap{max-width:1000px;margin:0 auto;padding:0 40px 90px}
+.col{max-width:700px}
+
+/* --- type ranks, measured: 40/48/800, 30/37.5/600, 20/25/600, 16 body ---- */
+h1.page{font-family:var(--f-head);font-size:40px;line-height:48px;font-weight:800;
+        letter-spacing:normal;margin:26px 0 18px}
+h2.section{font-family:var(--f-head);font-size:30px;line-height:37.5px;font-weight:600;
+           letter-spacing:normal;margin:64px 0 6px;padding-top:34px;
+           border-top:1px solid var(--line)}
+h2.section.first{border-top:0;padding-top:0;margin-top:48px}
+.q{display:block;font-family:var(--f-body);font-size:20px;line-height:25px;
+   font-weight:600;margin:0 0 4px;color:var(--ink)}
+legend.q{padding:0}
+.lede{font-size:16px;margin-bottom:14px;max-width:66ch}
+.lede a{color:var(--terracotta);text-decoration:underline;text-underline-offset:2px}
+.deadline{font-size:16px;font-weight:600;margin-bottom:14px}
+/* the reference prints this at body size, not smaller */
+.micro{font-size:16px;color:var(--gray);margin:0 0 10px;max-width:64ch}
+.req{color:var(--terracotta);font-size:14px;margin-left:3px}
+.reqnote{font-size:14px;color:var(--gray);margin-top:6px}
+
+.callout{background:var(--cream);border-left:3px solid var(--terracotta);
+         padding:14px 18px;margin:20px 0 8px;font-size:16px;max-width:66ch}
+
+/* --- controls. No border: a three layer shadow ring, as theirs. ---------- */
+/* 25 heading + 4 + 24.8 micro + 10 + 36 control + 42 = 141.8, the
+   reference's 142px between question tops */
+fieldset.ph{border-bottom:1px dashed var(--terracotta);color:var(--terracotta)}
+.field{border:0;margin:0 0 42px;padding:0}
+.field{margin-bottom:42px}
+input[type=text],input[type=email],input[type=url],input[type=number],select,textarea{
+  width:100%;font-family:inherit;font-size:16px;color:var(--ink);
+  background:rgba(255,255,255,.5);border:0;border-radius:8px;padding:0 10px;height:36px;
+  /* the reference's three layer ring, geometry and alpha ladder untouched.
+     Layers 2 and 3 are re-toned from their warm #3D3B35 to our navy so the ring
+     agrees with --line, which sits within a few pixels of it. Layer 1 stays
+     black: it reads as a drop shadow, not a color. */
+  box-shadow:rgba(0,0,0,.12) 0 1px 1px 0, rgba(22,50,62,.16) 0 0 0 1px,
+             rgba(22,50,62,.08) 0 2px 5px 0;
+}
+textarea{height:auto;min-height:92px;padding:9px 10px;line-height:1.5;resize:vertical}
+select{appearance:none;background-image:
+  url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none'><path d='M1 1l5 5 5-5' stroke='%236B6660' stroke-width='1.8' stroke-linecap='round'/></svg>");
+  background-repeat:no-repeat;background-position:right 12px center;padding-right:32px}
+input:focus,select:focus,textarea:focus{outline:2px solid var(--terracotta);
+  outline-offset:1px;background:#fff}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.money{position:relative}
+.money::before{content:"$";position:absolute;left:11px;top:50%;transform:translateY(-50%);
+  color:var(--gray);font-size:15px;pointer-events:none}
+.money input{padding-left:24px}
+
+.opts{display:flex;flex-direction:column;gap:8px;margin-top:0}
+.opt{display:flex;align-items:flex-start;gap:10px;font-size:16px;line-height:25px;
+     cursor:pointer;padding:5.5px 11px;border-radius:8px;background:rgba(255,255,255,.5);
+     box-shadow:rgba(0,0,0,.12) 0 1px 1px 0, rgba(22,50,62,.16) 0 0 0 1px,
+                rgba(22,50,62,.08) 0 2px 5px 0}
+.opt:hover{background:#fff}
+.opt input{margin-top:3px;accent-color:var(--terracotta);flex:none}
+
+.actions{margin-top:44px}
+button.next{width:320px;max-width:100%;height:36px;border:0;border-radius:8px;
+  background:var(--terracotta);color:var(--cream);font-family:var(--f-body);
+  font-size:15px;font-weight:400;cursor:pointer;padding:0 13.5px}
+button.next:hover{background:var(--terracotta-dk)}
+button.next:focus-visible{outline:2px solid var(--navy);outline-offset:3px}
+.step-note{font-size:14px;color:var(--gray);margin-top:12px}
+
+footer{border-top:1px solid var(--line);margin-top:70px;padding-top:20px;
+       font-size:14px;color:var(--gray)}
+footer a{color:var(--terracotta)}
+
+@media (max-width:760px){
+  .wrap,.avatarwrap{padding-inline:22px}
+  h1.page{font-size:30px;line-height:37px}
+  h2.section{font-size:24px;line-height:30px}
+  .q{font-size:18px}
+  .two{grid-template-columns:1fr}
+  button.next{width:100%}
+}
+</style>
+<style>
+.route{margin:18px 0 6px;padding:20px 22px;border-left:3px solid var(--terracotta);
+ background:#FBF7F4;border-radius:0 6px 6px 0}
+.route h3{font-family:var(--f-head);font-weight:800;font-size:19px;margin:0 0 8px;color:var(--navy)}
+.route p{margin:0 0 12px;font-size:15px;color:#3A4750}
+.route a{color:var(--terracotta);font-weight:600}
+body.gated #rest,body.gated .gate-actions{display:none}
+.field.invalid input,.field.invalid textarea,.field.invalid select{box-shadow:0 0 0 2px var(--terracotta)}
+.field .err{display:none;color:var(--terracotta);font-size:13.5px;margin-top:6px}
+.field.invalid .err{display:block}
+</style>
+</head><body><div class="cover" style="background-image:url(https://raw.githubusercontent.com/HAS2-phlang/ffg-vs-reference/main/public/assets/pitchforum/form-cover.jpg)"><p class="lock"><span class="a">Pitch</span><span class="b">Forum</span></p></div>
+<div class="avatarwrap"><img class="avatar" src="https://raw.githubusercontent.com/HAS2-phlang/ffg-vs-reference/main/public/assets/pitchforum/form-avatar.png" alt="Foundry for Good"></div>
+<main class="wrap"><div class="col">
+ <h1 class="page">Your application is with the panel.</h1>
+ <p class="intro">Every applicant hears from us either way. If you are selected, the Zoom link goes out
+ at least a week before the forum, and founders present live.</p>
+ <p class="intro">Questions: <a href="mailto:hugh.sasil@foundryforgood.com">hugh.sasil@foundryforgood.com</a></p>
+ <p class="intro" style="margin-top:28px"><a href="https://ffg-pitch-forumv1.netlify.app/">Back to the Pitch Forum</a></p>
+</div></main></body></html>

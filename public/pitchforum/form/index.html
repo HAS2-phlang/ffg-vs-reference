@@ -1,0 +1,415 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Foundry for Good Pitch Forum: Application</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&amp;family=Inter:wght@400;500;600&amp;display=swap">
+<style>
+:root{
+  --navy:#16323E; --navy-deep:#0F242D; --terracotta:#B5502D; --terracotta-lt:#D9714B;
+  --terracotta-dk:#A2472A;
+  --cream:#F7F4EE; --ink:#1A1A1A; --gray:#6B6660; --line:rgba(22,50,62,.15);
+  --f-head:'Archivo',system-ui,sans-serif;
+  --f-body:'Inter',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+*::before,*::after{box-sizing:border-box}
+body{background:#fff;color:var(--ink);font-family:var(--f-body);font-size:16px;
+     line-height:1.55;-webkit-font-smoothing:antialiased}
+
+/* --- cover banner and avatar, their opening move --------------------------
+   The lockup is real text, not baked into the image. Baking it meant the type
+   was upscaled on any high-DPI screen (a 1920 CSS-px banner needs 3840 device
+   px) and object-fit:cover kept cropping it vertically. As text it stays sharp
+   at any density and scales with the viewport instead of being cropped. */
+.cover{position:relative;width:100%;height:clamp(220px,30vw,420px);
+       background:var(--navy-deep) center/cover no-repeat;overflow:hidden}
+.cover .lock{position:absolute;right:clamp(22px,4vw,90px);top:50%;
+             transform:translateY(-50%);text-align:right;
+             font-family:var(--f-head);font-variation-settings:'wdth' 62;
+             font-weight:900;line-height:.702;letter-spacing:-.015em;
+             text-transform:uppercase;margin:0}
+.cover .lock span{display:block;font-size:clamp(74px,17.7vw,271px)}
+.cover .lock .a{color:var(--cream)}
+.cover .lock .b{color:var(--terracotta-lt)}
+@media (max-width:760px){
+  .cover .lock{right:auto;left:22px;text-align:left}
+  .cover .lock span{font-size:clamp(54px,17.5vw,100px)}
+}
+.avatarwrap{max-width:1000px;margin:0 auto;padding:0 40px;position:relative}
+.avatar{width:86px;height:86px;border-radius:50%;display:block;margin-top:-43px;
+        position:relative;z-index:2;box-shadow:0 0 0 4px #fff}
+
+.wrap{max-width:1000px;margin:0 auto;padding:0 40px 90px}
+.col{max-width:700px}
+
+/* --- type ranks, measured: 40/48/800, 30/37.5/600, 20/25/600, 16 body ---- */
+h1.page{font-family:var(--f-head);font-size:40px;line-height:48px;font-weight:800;
+        letter-spacing:normal;margin:26px 0 18px}
+h2.section{font-family:var(--f-head);font-size:30px;line-height:37.5px;font-weight:600;
+           letter-spacing:normal;margin:64px 0 6px;padding-top:34px;
+           border-top:1px solid var(--line)}
+h2.section.first{border-top:0;padding-top:0;margin-top:48px}
+.q{display:block;font-family:var(--f-body);font-size:20px;line-height:25px;
+   font-weight:600;margin:0 0 4px;color:var(--ink)}
+legend.q{padding:0}
+.lede{font-size:16px;margin-bottom:14px;max-width:66ch}
+.lede a{color:var(--terracotta);text-decoration:underline;text-underline-offset:2px}
+.deadline{font-size:16px;font-weight:600;margin-bottom:14px}
+/* the reference prints this at body size, not smaller */
+.micro{font-size:16px;color:var(--gray);margin:0 0 10px;max-width:64ch}
+.req{color:var(--terracotta);font-size:14px;margin-left:3px}
+.reqnote{font-size:14px;color:var(--gray);margin-top:6px}
+
+.callout{background:var(--cream);border-left:3px solid var(--terracotta);
+         padding:14px 18px;margin:20px 0 8px;font-size:16px;max-width:66ch}
+
+/* --- controls. No border: a three layer shadow ring, as theirs. ---------- */
+/* 25 heading + 4 + 24.8 micro + 10 + 36 control + 42 = 141.8, the
+   reference's 142px between question tops */
+fieldset.ph{border-bottom:1px dashed var(--terracotta);color:var(--terracotta)}
+.field{border:0;margin:0 0 42px;padding:0}
+.field{margin-bottom:42px}
+input[type=text],input[type=email],input[type=url],input[type=number],select,textarea{
+  width:100%;font-family:inherit;font-size:16px;color:var(--ink);
+  background:rgba(255,255,255,.5);border:0;border-radius:8px;padding:0 10px;height:36px;
+  /* the reference's three layer ring, geometry and alpha ladder untouched.
+     Layers 2 and 3 are re-toned from their warm #3D3B35 to our navy so the ring
+     agrees with --line, which sits within a few pixels of it. Layer 1 stays
+     black: it reads as a drop shadow, not a color. */
+  box-shadow:rgba(0,0,0,.12) 0 1px 1px 0, rgba(22,50,62,.16) 0 0 0 1px,
+             rgba(22,50,62,.08) 0 2px 5px 0;
+}
+textarea{height:auto;min-height:92px;padding:9px 10px;line-height:1.5;resize:vertical}
+select{appearance:none;background-image:
+  url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none'><path d='M1 1l5 5 5-5' stroke='%236B6660' stroke-width='1.8' stroke-linecap='round'/></svg>");
+  background-repeat:no-repeat;background-position:right 12px center;padding-right:32px}
+input:focus,select:focus,textarea:focus{outline:2px solid var(--terracotta);
+  outline-offset:1px;background:#fff}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.money{position:relative}
+.money::before{content:"$";position:absolute;left:11px;top:50%;transform:translateY(-50%);
+  color:var(--gray);font-size:15px;pointer-events:none}
+.money input{padding-left:24px}
+
+.opts{display:flex;flex-direction:column;gap:8px;margin-top:0}
+.opt{display:flex;align-items:flex-start;gap:10px;font-size:16px;line-height:25px;
+     cursor:pointer;padding:5.5px 11px;border-radius:8px;background:rgba(255,255,255,.5);
+     box-shadow:rgba(0,0,0,.12) 0 1px 1px 0, rgba(22,50,62,.16) 0 0 0 1px,
+                rgba(22,50,62,.08) 0 2px 5px 0}
+.opt:hover{background:#fff}
+.opt input{margin-top:3px;accent-color:var(--terracotta);flex:none}
+
+.actions{margin-top:44px}
+button.next{width:320px;max-width:100%;height:36px;border:0;border-radius:8px;
+  background:var(--terracotta);color:var(--cream);font-family:var(--f-body);
+  font-size:15px;font-weight:400;cursor:pointer;padding:0 13.5px}
+button.next:hover{background:var(--terracotta-dk)}
+button.next:focus-visible{outline:2px solid var(--navy);outline-offset:3px}
+.step-note{font-size:14px;color:var(--gray);margin-top:12px}
+
+footer{border-top:1px solid var(--line);margin-top:70px;padding-top:20px;
+       font-size:14px;color:var(--gray)}
+footer a{color:var(--terracotta)}
+
+@media (max-width:760px){
+  .wrap,.avatarwrap{padding-inline:22px}
+  h1.page{font-size:30px;line-height:37px}
+  h2.section{font-size:24px;line-height:30px}
+  .q{font-size:18px}
+  .two{grid-template-columns:1fr}
+  button.next{width:100%}
+}
+</style>
+<style>
+.route{margin:18px 0 6px;padding:20px 22px;border-left:3px solid var(--terracotta);
+ background:#FBF7F4;border-radius:0 6px 6px 0}
+.route h3{font-family:var(--f-head);font-weight:800;font-size:19px;margin:0 0 8px;color:var(--navy)}
+.route p{margin:0 0 12px;font-size:15px;color:#3A4750}
+.route a{color:var(--terracotta);font-weight:600}
+body.gated #rest,body.gated .gate-actions{display:none}
+.field.invalid input,.field.invalid textarea,.field.invalid select{box-shadow:0 0 0 2px var(--terracotta)}
+.field .err{display:none;color:var(--terracotta);font-size:13.5px;margin-top:6px}
+.field.invalid .err{display:block}
+</style>
+</head><body>
+<div class="cover" style="background-image:url(https://raw.githubusercontent.com/HAS2-phlang/ffg-vs-reference/main/public/assets/pitchforum/form-cover.jpg)"><p class="lock"><span class="a">Pitch</span><span class="b">Forum</span></p></div>
+<div class="avatarwrap"><img class="avatar" src="https://raw.githubusercontent.com/HAS2-phlang/ffg-vs-reference/main/public/assets/pitchforum/form-avatar.png" alt="Foundry for Good"></div>
+<main class="wrap"><div class="col"><form id="pf" name="pitch-forum" method="POST" action="/thanks.html" data-netlify="true" netlify-honeypot="bot-field" novalidate><input type="hidden" name="form-name" value="pitch-forum"><p class="hp" hidden><label>Leave this empty <input name="bot-field"></label></p>
+<h1 class="page">Pitch Forum Application</h1>
+<p class="deadline">Applications close Friday, September 25, 2026 at 11:59pm ET.</p>
+<p class="lede">We want to hear about your business. <a href="questions.html">Every question and its character limit is listed here</a>, so you can draft your answers before you open the form. If you have a question about the forum, <a href="https://ffg-pitch-forumv1.netlify.app/">read the application details</a>.</p>
+<div class="callout">The panel reads every application and decides every place itself. Nothing is scored automatically.</div>
+<h2 class="section first">Step 1 of 4: Eligibility</h2>
+<p class="lede">The Pitch Forum is for early stage companies, pre-seed or seed, that sell to nonprofits, schools, and associations. Four quick questions. If any answer rules you out, we will say so straight away rather than let you fill in a form that cannot go anywhere.</p>
+<p class="reqnote">Questions marked * are required.</p>
+<fieldset class="field" data-src="Rafi F9. Halcyon Accelerator, published Response Planning Worksheet, captured 15 Sep 2026, question 2. Halcyon's three-way version catches hybrids, which our old yes/no could not.">
+<legend class="q">How is your business structured?<span class="req" aria-hidden="true">*</span></legend>
+<p class="micro" id="structure-h">Foundry for Good invests in businesses that sell to nonprofits, schools, and associations. We do not invest in nonprofits.</p>
+<div class="opts">
+<label class="opt"><input type="radio" name="structure" value="For-profit" required><span>For-profit</span></label>
+<label class="opt"><input type="radio" name="structure" value="Hybrid, both a for-profit and a nonprofit arm"><span>Hybrid, both a for-profit and a nonprofit arm</span></label>
+<label class="opt"><input type="radio" name="structure" value="Nonprofit"><span>Nonprofit</span></label>
+</div>
+</fieldset>
+<fieldset class="field" data-src="Rafi F10: &quot;this doesn't list associations as a market that they're serving, but it's one of the key markets we're talking about.&quot; The gate that makes the whole thesis explicit.">
+<legend class="q">Do you sell your product or service to nonprofits, schools, associations, or faith-based organizations?<span class="req" aria-hidden="true">*</span></legend>
+<p class="micro" id="sells_to_sector-h">You do not have to sell only into this sector. You do have to sell into it today.</p>
+<div class="opts">
+<label class="opt"><input type="radio" name="sells_to_sector" value="Yes" required><span>Yes</span></label>
+<label class="opt"><input type="radio" name="sells_to_sector" value="No"><span>No</span></label>
+</div>
+</fieldset>
+<fieldset class="field" data-src="Rafi M11. Blackbaud Social Good Startup Program, captured 15 Sep 2026, question 18, hardened from usage to revenue.">
+<legend class="q">Do you have paying customers today?<span class="req" aria-hidden="true">*</span></legend>
+<div class="opts">
+<label class="opt"><input type="radio" name="has_paying_customers" value="Yes" required><span>Yes</span></label>
+<label class="opt"><input type="radio" name="has_paying_customers" value="No"><span>No</span></label>
+</div>
+</fieldset>
+<fieldset class="field" data-src="Rafi F4 and F5. The date and time are UNCONFIRMED: he said &quot;early October... a Thursday afternoon that both Adam and I are available&quot; and never named October 8.">
+<legend class="q">The Pitch Forum is on <span class="ph">Thursday, October 8, 2026</span>, at <span class="ph">2:00pm ET</span> on Zoom. Can a founder present live at that time?<span class="req" aria-hidden="true">*</span></legend>
+<p class="micro" id="can_present-h">Founders present at the forum. The Zoom link goes out at least a week before the forum.</p>
+<div class="opts">
+<label class="opt"><input type="radio" name="can_present" value="Yes" required><span>Yes</span></label>
+<label class="opt"><input type="radio" name="can_present" value="No"><span>No</span></label>
+</div>
+</fieldset>
+<div class="actions gate-actions"><p class="step-note">Step 1 of 4</p></div>
+<div id="rest"><h2 class="section">Step 2 of 4: You and the company</h2>
+<p class="lede">This section tells us who you are and how to reach you. It is not part of how the panel evaluates your application.</p>
+<p class="reqnote">Questions marked * are required.</p>
+<div class="field" data-src="Blackbaud Social Good Startup Program, captured 15 Sep 2026, question 1.">
+<label class="q" for="company_name">Company name<span class="req" aria-hidden="true">*</span></label>
+<input type="text" id="company_name" name="company_name" required>
+</div>
+<div class="field" data-src="Blackbaud Social Good Startup Program, captured 15 Sep 2026, question 3.">
+<label class="q" for="company_website">Company website<span class="req" aria-hidden="true">*</span></label>
+<input type="url" id="company_website" name="company_website" placeholder="https://" required>
+</div>
+<div class="field" data-src="Blackbaud Social Good Startup Program, captured 15 Sep 2026, question 4. Rafi approved the trio.">
+<label class="q" for="contact_name">Your name<span class="req" aria-hidden="true">*</span></label>
+<input type="text" id="contact_name" name="contact_name" required>
+</div>
+<div class="field" data-src="Rafi F4, and the word he used: &quot;your name, your role, your LinkedIn profile&quot;.">
+<label class="q" for="contact_title">Your role<span class="req" aria-hidden="true">*</span></label>
+<p class="micro" id="contact_title-h">Founders present at the forum. Tell us who will be on the Zoom.</p>
+<input type="text" id="contact_title" name="contact_title" required aria-describedby="contact_title-h">
+</div>
+<div class="field" data-src="Blackbaud Social Good Startup Program, captured 15 Sep 2026, question 6.">
+<label class="q" for="work_email">Your work email address<span class="req" aria-hidden="true">*</span></label>
+<input type="email" id="work_email" name="work_email" required>
+</div>
+<div class="field" data-src="Rafi named it: &quot;your name, your role, your LinkedIn profile.&quot; Antler asks it too, fourth and optionally. Blackbaud never asks for it.">
+<label class="q" for="linkedin_url">Your LinkedIn profile<span class="req" aria-hidden="true">*</span></label>
+<input type="url" id="linkedin_url" name="linkedin_url" placeholder="https://" required>
+</div>
+<div class="field" data-src="Blackbaud Social Good Startup Program, captured 15 Sep 2026, question 10, merged with Village Capital, VilCap Innovative Capital Facility, captured 15 Sep 2026, question 44.">
+<label class="q" for="team">How many people are on your team, and who leads what?<span class="req" aria-hidden="true">*</span></label>
+<p class="micro" id="team-h">Full-time headcount, then the names and roles of whoever runs the company.</p>
+<textarea id="team" name="team" rows="4" maxlength="400" required aria-describedby="team-h"></textarea>
+</div>
+<div class="actions"><p class="step-note">Step 2 of 4</p></div>
+<h2 class="section">Step 3 of 4: The business</h2>
+<p class="lede">Seven questions. Short answers are fine and preferred. The panel reads these before the forum.</p>
+<p class="reqnote">Questions marked * are required.</p>
+<div class="field" data-src="Village Capital, VilCap Innovative Capital Facility, captured 15 Sep 2026, question 37.">
+<label class="q" for="one_liner">Please provide a one sentence description of your company<span class="req" aria-hidden="true">*</span></label>
+<input type="text" id="one_liner" name="one_liner" maxlength="140" required>
+</div>
+<fieldset class="field" data-src="Village Capital, VilCap Innovative Capital Facility, captured 15 Sep 2026, question 39. Restored: it sorts applications in one click and is not the same question as how you make money.">
+<legend class="q">What type of business do you have?<span class="req" aria-hidden="true">*</span></legend>
+<div class="opts">
+<label class="opt"><input type="radio" name="business_type" value="Software" required><span>Software</span></label>
+<label class="opt"><input type="radio" name="business_type" value="Services or consulting"><span>Services or consulting</span></label>
+<label class="opt"><input type="radio" name="business_type" value="Hardware"><span>Hardware</span></label>
+<label class="opt"><input type="radio" name="business_type" value="Marketplace"><span>Marketplace</span></label>
+<label class="opt"><input type="radio" name="business_type" value="Media or content"><span>Media or content</span></label>
+<label class="opt"><input type="radio" name="business_type" value="Other"><span>Other</span></label>
+</div>
+</fieldset>
+<div class="field" data-src="Halcyon Accelerator, published Response Planning Worksheet, captured 15 Sep 2026, question 7, merged with Village Capital, VilCap Innovative Capital Facility, captured 15 Sep 2026, question 41 and Blackbaud Social Good Startup Program, captured 15 Sep 2026, question 12. Both auditors flagged that nothing on the form asked what the company actually makes.">
+<label class="q" for="problem">Describe the problem your business solves, and the product or service that solves it. How does it work?<span class="req" aria-hidden="true">*</span></label>
+<p class="micro" id="problem-h">The problem, then the thing you sell. Plain words are better than polished ones.</p>
+<textarea id="problem" name="problem" rows="4" maxlength="600" required aria-describedby="problem-h"></textarea>
+</div>
+<fieldset class="field" data-src="Rafi F10, F11. Blackbaud Social Good Startup Program, captured 15 Sep 2026, question 27, with associations added.">
+<legend class="q">To which of the following markets does your business sell? Check all that apply.<span class="req" aria-hidden="true">*</span></legend>
+<p class="micro" id="markets_served-h">Markets where you have paying customers today.</p>
+<div class="opts">
+<label class="opt"><input type="checkbox" name="markets_served" value="Nonprofits"><span>Nonprofits</span></label>
+<label class="opt"><input type="checkbox" name="markets_served" value="Associations and membership organizations"><span>Associations and membership organizations</span></label>
+<label class="opt"><input type="checkbox" name="markets_served" value="Schools and school districts"><span>Schools and school districts</span></label>
+<label class="opt"><input type="checkbox" name="markets_served" value="Colleges and universities"><span>Colleges and universities</span></label>
+<label class="opt"><input type="checkbox" name="markets_served" value="Foundations and grantmakers"><span>Foundations and grantmakers</span></label>
+<label class="opt"><input type="checkbox" name="markets_served" value="Faith-based organizations"><span>Faith-based organizations</span></label>
+<label class="opt"><input type="checkbox" name="markets_served" value="Customers outside these sectors"><span>Customers outside these sectors</span></label>
+<label class="opt"><input type="checkbox" name="markets_served" value="Other"><span>Other</span></label>
+</div>
+</fieldset>
+<div class="field" data-src="Blackbaud Social Good Startup Program, captured 15 Sep 2026, question 13.">
+<label class="q" for="customer">Who is the customer?<span class="req" aria-hidden="true">*</span></label>
+<p class="micro" id="customer-h">Who buys it, and who uses it, if they are different people.</p>
+<textarea id="customer" name="customer" rows="4" maxlength="300" required aria-describedby="customer-h"></textarea>
+</div>
+<div class="field" data-src="Halcyon Accelerator, published Response Planning Worksheet, captured 15 Sep 2026, question 14, merged with Techstars, published application preview at techstars.com/application-preview, read live 15 Sep 2026's &quot;or could become your competitors&quot;. Note: our own Techstars PDF is stamped NOT PUBLISHED and predates the preview page; this steal was verified on the live page, not on that PDF.">
+<label class="q" for="competitors">Who or what are your competitors or substitutes, and who could become one? What makes you stand out?<span class="req" aria-hidden="true">*</span></label>
+<p class="micro" id="competitors-h">Substitutes count. A spreadsheet and an intern is a competitor.</p>
+<textarea id="competitors" name="competitors" rows="4" maxlength="500" required aria-describedby="competitors-h"></textarea>
+</div>
+<div class="field" data-src="Halcyon Accelerator, published Response Planning Worksheet, captured 15 Sep 2026, question 13. Blackbaud Social Good Startup Program, captured 15 Sep 2026, question 17.">
+<label class="q" for="gtm">What is your go-to-market strategy right now, and how will those channels grow revenue?<span class="req" aria-hidden="true">*</span></label>
+<textarea id="gtm" name="gtm" rows="4" maxlength="500" required></textarea>
+</div>
+<div class="field" data-src="Halcyon Accelerator, published Response Planning Worksheet, captured 15 Sep 2026, question 11. Blackbaud Social Good Startup Program, captured 15 Sep 2026, question 20, first half.">
+<label class="q" for="how_you_make_money">Describe your business model. How does your business make money, even if it is not making any today?<span class="req" aria-hidden="true">*</span></label>
+<textarea id="how_you_make_money" name="how_you_make_money" rows="4" maxlength="500" required></textarea>
+</div>
+<div class="actions"><p class="step-note">Step 3 of 4</p></div>
+<h2 class="section">Step 4 of 4: Traction and the ask</h2>
+<p class="lede">Numbers first, then what you want from the panel.</p>
+<p class="reqnote">Questions marked * are required.</p>
+<fieldset class="field" data-src="Village Capital, VilCap Innovative Capital Facility, captured 15 Sep 2026, question 26. One select that replaces four numeric fields we used to ask.">
+<legend class="q">How would you describe your revenue?<span class="req" aria-hidden="true">*</span></legend>
+<div class="opts">
+<label class="opt"><input type="radio" name="revenue_shape" value="Pre-revenue, or sporadic pilot and project work" required><span>Pre-revenue, or sporadic pilot and project work</span></label>
+<label class="opt"><input type="radio" name="revenue_shape" value="Repeat customers, still scaling"><span>Repeat customers, still scaling</span></label>
+<label class="opt"><input type="radio" name="revenue_shape" value="Consistent month over month, and predictable"><span>Consistent month over month, and predictable</span></label>
+<label class="opt"><input type="radio" name="revenue_shape" value="Fully recurring, with multi-year contracts"><span>Fully recurring, with multi-year contracts</span></label>
+</div>
+</fieldset>
+<div class="field" data-src="Rafi F12: the words operating budget come out, the word is revenue. Elemental asks the same thing at question 52; we are not taking it from them, the wording is Rafi's.">
+<label class="q" for="revenue_last_12">What was your revenue over the last 12 months?<span class="req" aria-hidden="true">*</span></label>
+<p class="micro" id="revenue_last_12-h">In US dollars. Actuals, not projections.</p>
+<input type="number" id="revenue_last_12" name="revenue_last_12" required aria-describedby="revenue_last_12-h">
+</div>
+<div class="field" data-src="Village Capital, VilCap Innovative Capital Facility, captured 15 Sep 2026, question 34.">
+<label class="q" for="customers_count">How many paying customers do you have?<span class="req" aria-hidden="true">*</span></label>
+<input type="number" id="customers_count" name="customers_count" required>
+</div>
+<fieldset class="field" data-src="Village Capital, VilCap Innovative Capital Facility, captured 15 Sep 2026, questions 31 and 32, merged into one select.">
+<legend class="q">Are you profitable, and if not, when do you expect to be?<span class="req" aria-hidden="true">*</span></legend>
+<div class="opts">
+<label class="opt"><input type="radio" name="profitability" value="Yes, profitable today" required><span>Yes, profitable today</span></label>
+<label class="opt"><input type="radio" name="profitability" value="Not yet, within a year"><span>Not yet, within a year</span></label>
+<label class="opt"><input type="radio" name="profitability" value="Not yet, one to three years"><span>Not yet, one to three years</span></label>
+<label class="opt"><input type="radio" name="profitability" value="Not yet, more than three years"><span>Not yet, more than three years</span></label>
+</div>
+</fieldset>
+<fieldset class="field" data-src="Village Capital, VilCap Innovative Capital Facility, captured 15 Sep 2026, question 30. One click, and it recovers the revenue trajectory from the step Hugh called awesome without asking for three years of projections.">
+<legend class="q">What is your target annual sales growth for the next few years?<span class="req" aria-hidden="true">*</span></legend>
+<div class="opts">
+<label class="opt"><input type="radio" name="growth_forecast" value="0 to 5%" required><span>0 to 5%</span></label>
+<label class="opt"><input type="radio" name="growth_forecast" value="5 to 15%"><span>5 to 15%</span></label>
+<label class="opt"><input type="radio" name="growth_forecast" value="15 to 30%"><span>15 to 30%</span></label>
+<label class="opt"><input type="radio" name="growth_forecast" value="30 to 50%"><span>30 to 50%</span></label>
+<label class="opt"><input type="radio" name="growth_forecast" value="50 to 100%"><span>50 to 100%</span></label>
+<label class="opt"><input type="radio" name="growth_forecast" value="Above 100%"><span>Above 100%</span></label>
+</div>
+</fieldset>
+<fieldset class="field" data-src="Village Capital, VilCap Innovative Capital Facility, captured 15 Sep 2026, questions 12 to 15, banded into one select rather than split across four number boxes.">
+<legend class="q">How much outside capital have you raised to date?<span class="req" aria-hidden="true">*</span></legend>
+<p class="micro" id="capital_raised-h">The Pitch Forum is for early stage companies, pre-seed or seed.</p>
+<div class="opts">
+<label class="opt"><input type="radio" name="capital_raised" value="None. We are funded by revenue." required><span>None. We are funded by revenue.</span></label>
+<label class="opt"><input type="radio" name="capital_raised" value="Under $500,000"><span>Under $500,000</span></label>
+<label class="opt"><input type="radio" name="capital_raised" value="$500,000 to $2 million"><span>$500,000 to $2 million</span></label>
+<label class="opt"><input type="radio" name="capital_raised" value="$2 million to $10 million"><span>$2 million to $10 million</span></label>
+<label class="opt"><input type="radio" name="capital_raised" value="More than $10 million"><span>More than $10 million</span></label>
+</div>
+</fieldset>
+<fieldset class="field" data-src="Village Capital, VilCap Innovative Capital Facility, captured 15 Sep 2026, question 16. Final option closes the stage gap for companies not in a round.">
+<legend class="q">How much capital are you currently raising?<span class="req" aria-hidden="true">*</span></legend>
+<div class="opts">
+<label class="opt"><input type="radio" name="raise_amount" value="Under $100,000" required><span>Under $100,000</span></label>
+<label class="opt"><input type="radio" name="raise_amount" value="$100,000 to $250,000"><span>$100,000 to $250,000</span></label>
+<label class="opt"><input type="radio" name="raise_amount" value="$250,000 to $500,000"><span>$250,000 to $500,000</span></label>
+<label class="opt"><input type="radio" name="raise_amount" value="$500,000 to $1 million"><span>$500,000 to $1 million</span></label>
+<label class="opt"><input type="radio" name="raise_amount" value="More than $1 million"><span>More than $1 million</span></label>
+<label class="opt"><input type="radio" name="raise_amount" value="We are not running a round. We are open to the right individual investors."><span>We are not running a round. We are open to the right individual investors.</span></label>
+</div>
+</fieldset>
+<div class="field" data-src="Rafi F14, his exact wording, kept verbatim. Village Capital, VilCap Innovative Capital Facility, captured 15 Sep 2026, question 22 folded into the helper line rather than asked separately.">
+<label class="q" for="growth_need">What does your business need to accelerate growth?<span class="req" aria-hidden="true">*</span></label>
+<p class="micro" id="growth_need-h">What the next level looks like, what it would take to get there, and what has made raising capital hard so far.</p>
+<textarea id="growth_need" name="growth_need" rows="4" maxlength="500" required aria-describedby="growth_need-h"></textarea>
+</div>
+<div class="field" data-src="Rafi approved it: &quot;Link to tech or one page... Okay.&quot;">
+<label class="q" for="deck_url">Link to your deck, one-pager, or website overview<span class="req" aria-hidden="true">*</span></label>
+<p class="micro" id="deck_url-h">A link the panel can open without a sign-in.</p>
+<input type="url" id="deck_url" name="deck_url" placeholder="https://" required aria-describedby="deck_url-h">
+</div>
+<div class="field" data-src="Rafi approved it in the same breath as the deck link.">
+<label class="q" for="other_notes">Anything else the panel should know?</label>
+<textarea id="other_notes" name="other_notes" rows="4" maxlength="400"></textarea>
+</div>
+<div class="field" data-src="Rafi F7. Replaces the deleted data-sharing reassurance.">
+<div class="opts"><label class="opt"><input type="checkbox" id="attest_share" name="attest_share" value="yes" required><span class="q">I understand that Foundry for Good will share this application with the Pitch Forum panel.<span class="req" aria-hidden="true">*</span></span></label></div>
+</div>
+<div class="actions"><button type="submit" class="next" id="pf-submit">Submit application</button><p class="step-note">Step 4 of 4</p></div>
+<input type="hidden" name="utm_source" data-attr>
+<input type="hidden" name="utm_medium" data-attr>
+<input type="hidden" name="utm_campaign" data-attr>
+<input type="hidden" name="utm_content" data-attr>
+<input type="hidden" name="referrer" data-attr>
+<input type="hidden" name="landing_page" data-attr>
+<input type="hidden" name="referral_id" data-attr>
+<footer>30 questions across 4 steps. Foundry for Good, Atlanta, Georgia. <a href="mailto:hugh.sasil@foundryforgood.com">hugh.sasil@foundryforgood.com</a></footer>
+</div></form></div></main>
+<script>
+(function(){
+  var GATES = {"structure": ["Nonprofit", "We invest in businesses, not nonprofits", "Foundry for Good invests in for-profit businesses that sell to nonprofits, schools and associations. We do not invest in nonprofits themselves. If that changes, or if you have a for-profit arm, we would like to hear from you."], "sells_to_sector": ["No", "Our panel backs companies selling into this sector", "The Pitch Forum is for companies whose customers are nonprofits, schools, associations or faith-based organizations. If you enter that market later, come back to us."], "has_paying_customers": ["No", "Come back when you have paying customers", "The panel invests in companies with revenue. A pilot or a waiting list is not yet what this forum is for. We run it quarterly, so there will be another one."], "can_present": ["No", "The date does not work", "Founders present live at the forum. If nobody can make this date, tell us and we will put you in front of the next panel instead."]};
+  var form = document.getElementById('pf');
+  var body = document.body;
+  function fieldOf(el){ while(el && el!==form){ if(el.classList && el.classList.contains('field')) return el; el=el.parentNode; } return null; }
+  function clearRoute(){ var r=form.querySelector('.route'); if(r) r.parentNode.removeChild(r); body.classList.remove('gated'); }
+  function checkGates(){
+    clearRoute();
+    var names = Object.keys(GATES);
+    for(var i=0;i<names.length;i++){
+      var n=names[i], g=GATES[n];
+      var picked = form.querySelector('input[name="'+n+'"]:checked');
+      if(picked && picked.value===g[0]){
+        var f = fieldOf(picked);
+        var card = document.createElement('div'); card.className='route';
+        card.innerHTML = '<h3>'+g[1]+'</h3><p>'+g[2]+'</p>'
+          + '<p><a href="#" data-undo>Go back and change an answer</a></p>';
+        f.parentNode.insertBefore(card, f.nextSibling);
+        body.classList.add('gated');
+        card.querySelector('[data-undo]').addEventListener('click', function(e){
+          e.preventDefault(); picked.checked=false; checkGates(); f.scrollIntoView({behavior:'smooth',block:'center'});
+        });
+        return false;
+      }
+    }
+    return true;
+  }
+  form.addEventListener('change', function(e){ if(e.target && GATES[e.target.name]) checkGates(); });
+
+  // validation that reads like the design, not the browser's default bubble
+  function validate(){
+    var ok=true, first=null;
+    form.querySelectorAll('.field').forEach(function(f){ f.classList.remove('invalid'); });
+    form.querySelectorAll('[required]').forEach(function(el){
+      if(el.closest('#rest') && body.classList.contains('gated')) return;
+      var f=fieldOf(el); if(!f) return;
+      var bad=false;
+      if(el.type==='radio'||el.type==='checkbox'){
+        var group=form.querySelectorAll('input[name="'+el.name+'"]');
+        bad = !Array.prototype.some.call(group,function(x){return x.checked;});
+      } else { bad = !el.value.trim() || (el.type==='email' && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(el.value)) || (el.type==='url' && !/^https?:\/\//i.test(el.value)); }
+      if(bad){ ok=false; f.classList.add('invalid'); if(!first) first=f;
+        if(!f.querySelector('.err')){ var m=document.createElement('p'); m.className='err';
+          m.textContent = el.type==='email' ? 'Enter a valid email address.' : el.type==='url' ? 'Enter a full URL, starting https://' : 'This one is required.'; f.appendChild(m); } }
+    });
+    if(first) first.scrollIntoView({behavior:'smooth',block:'center'});
+    return ok;
+  }
+  form.addEventListener('submit', function(e){
+    if(!checkGates()){ e.preventDefault(); return; }
+    if(!validate()){ e.preventDefault(); return; }
+    var b=document.getElementById('pf-submit'); b.disabled=true; b.textContent='Sending...';
+  });
+})();
+</script>
+</body></html>
