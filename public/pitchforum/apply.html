@@ -391,7 +391,7 @@ select.f-input{padding-right:28px;cursor:pointer}
 .route .btn-fill,.confirm .btn-fill,.fail .btn-fill{margin-top:20px}
 /* scoped to the go-back control: the waitlist replacement paragraph carries links too */
 .route>.link{margin-top:26px;display:inline-block}
-.confirm .tlw{margin-top:30px}
+.confirm .tlw{margin-top:30px} .confirm .tl{margin-left:auto;margin-right:auto}
 .fail{border-color:#A04141}
 /* the reference number is the thing to keep, not one more body sentence */
 .f-ref{
@@ -1909,7 +1909,7 @@ body.is-landing .foot{display:none}
 
   document.addEventListener('click', function(e){
     if(e.target.closest('[data-openform]')){ e.preventDefault(); show('form', true); return; }
-    if(e.target.closest('[data-closeform]')){ e.preventDefault(); history.back(); return; }
+    if(e.target.closest('[data-closeform]')){ e.preventDefault(); show('landing', true); return; }
 
     var jump = e.target.closest('[data-openacc]');
     if(jump){
