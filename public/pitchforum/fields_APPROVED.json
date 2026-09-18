@@ -38,6 +38,33 @@
     "open_to_minority_stake",
     "can_present_oct8"
   ],
+  "gate_cards": [
+    {
+      "card": 1,
+      "heading": "This application is for for-profit companies.",
+      "body": "You told us your organization is a nonprofit, so the Pitch Forum is not the right room. Foundry for Good invests in the businesses that sell to nonprofits, schools, and associations."
+    },
+    {
+      "card": 2,
+      "heading": "The Pitch Forum is for companies whose customers are nonprofits, schools, associations, and faith-based organizations.",
+      "body": "The panel's operating experience is in that market. If you do not sell into it, there is nothing here they can help you with."
+    },
+    {
+      "card": 3,
+      "heading": "The panel invests in companies with a proven product and real customers.",
+      "body": "Come back when you are selling."
+    },
+    {
+      "card": 4,
+      "heading": "Panel members buy minority stakes of $25K to $100K each.",
+      "body": "If you are not selling equity, there is nothing for this room to do. Tell us when that changes."
+    },
+    {
+      "card": 5,
+      "heading": "The forum runs quarterly.",
+      "body": "Leave your work email and we will write when applications open for the next one."
+    }
+  ],
   "fields": [
     {
       "name": "is_for_profit",
@@ -54,7 +81,8 @@
         {
           "value": "No",
           "text": "No",
-          "gate": true
+          "gate": true,
+          "gate_card": 1
         }
       ],
       "error": "Pick one to continue."
@@ -74,7 +102,8 @@
         {
           "value": "No",
           "text": "No",
-          "gate": true
+          "gate": true,
+          "gate_card": 2
         }
       ],
       "error": "Pick one to continue."
@@ -94,7 +123,8 @@
         {
           "value": "No",
           "text": "No",
-          "gate": true
+          "gate": true,
+          "gate_card": 3
         }
       ],
       "error": "Pick one to continue."
@@ -114,7 +144,8 @@
         {
           "value": "No",
           "text": "No",
-          "gate": true
+          "gate": true,
+          "gate_card": 4
         }
       ],
       "error": "Pick one to continue."
@@ -134,7 +165,8 @@
         {
           "value": "No",
           "text": "No",
-          "gate": true
+          "gate": true,
+          "gate_card": 5
         }
       ],
       "error": "Pick one to continue."
@@ -214,7 +246,7 @@
       "step": 3,
       "kind": "checkbox",
       "label": "Who do you sell to? Select every market you sell into today.",
-      "required": false,
+      "required": true,
       "micro": "Markets where you have paying customers today, not markets you plan to enter.",
       "options": [
         {
@@ -259,7 +291,8 @@
       "label": "Which other market?",
       "required": true,
       "error": "Name the market, or uncheck Other.",
-      "maxlength": "100"
+      "maxlength": "100",
+      "show_if": "markets_served:Other"
     },
     {
       "name": "headquarters",
@@ -269,6 +302,11 @@
       "required": true,
       "micro": "The location of your main operations, not where you are incorporated.",
       "options": [
+        {
+          "value": "",
+          "text": "Pick one",
+          "placeholder": true
+        },
         {
           "value": "United States",
           "text": "United States"
@@ -291,6 +329,11 @@
       "label": "What year did you book your first paying customer?",
       "required": true,
       "options": [
+        {
+          "value": "",
+          "text": "Pick a year",
+          "placeholder": true
+        },
         {
           "value": "2026",
           "text": "2026"
@@ -697,7 +740,7 @@
       "name": "attest_accurate",
       "step": 4,
       "kind": "checkbox",
-      "label": "The revenue and customer figures above are actuals, not projections. *",
+      "label": "The revenue and customer figures above are actuals, not projections.",
       "required": true,
       "error": "Check this box to submit."
     },
@@ -707,9 +750,7 @@
       "kind": "checkbox",
       "label": "I understand that Foundry for Good will share this application with the Pitch Forum panel.",
       "required": true,
-      "micro": "Your answers save in this browser as you go, so you can stop and come back on this device.",
-      "error": "Check this box to submit.",
-      "disabled_by": "fieldId"
+      "error": "Check this box to submit."
     }
   ]
 }
