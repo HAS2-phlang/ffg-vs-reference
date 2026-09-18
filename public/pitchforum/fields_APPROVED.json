@@ -1,5 +1,15 @@
 {
   "spec": "Foundry for Good Pitch Forum: authoritative application form specification. 33 fields, 4 steps, 5 eligibility gates.",
+  "behaviour_contract": {
+    "steps": "Four steps. Next and Back navigate. Submit only on the last step.",
+    "gates": "An option marked gate:true ends the application and shows the gate_card whose number matches gate_card. Steps 2 to 4 and the submit button hide. A 'Go back and change an answer' button restores the form.",
+    "show_if": "field:value. The field is hidden until that option is selected, and is required only while visible.",
+    "disabled_by": "Named checkbox, when ticked, disables and clears this field and makes it not required.",
+    "char_counter": "Live character counter shown as used/limit. Add a 'near' state at 90 percent of the limit.",
+    "derived": "A live read-only line computed from this field and its paired current-value field. revenue pairs revenue_last_12 with revenue_prior_12; customers pairs customers_now with customers_prior_12.",
+    "invalid_state": "A failing control or fieldset carries an 'invalid' state.",
+    "hidden_fields": "Seven hidden attribution inputs, populated from the URL and referrer."
+  },
   "steps": [
     {
       "n": 1,
@@ -42,27 +52,35 @@
     {
       "card": 1,
       "heading": "This application is for for-profit companies.",
-      "body": "You told us your organization is a nonprofit, so the Pitch Forum is not the right room. Foundry for Good invests in the businesses that sell to nonprofits, schools, and associations."
+      "body": "You told us your organization is a nonprofit, so the Pitch Forum is not the right room. Foundry for Good invests in the businesses that sell to nonprofits, schools, and associations.",
+      "reopen_button": "Go back and change an answer"
     },
     {
       "card": 2,
       "heading": "The Pitch Forum is for companies whose customers are nonprofits, schools, associations, and faith-based organizations.",
-      "body": "The panel's operating experience is in that market. If you do not sell into it, there is nothing here they can help you with."
+      "body": "The panel's operating experience is in that market. If you do not sell into it, there is nothing here they can help you with.",
+      "reopen_button": "Go back and change an answer"
     },
     {
       "card": 3,
       "heading": "The panel invests in companies with a proven product and real customers.",
-      "body": "Come back when you are selling."
+      "body": "Come back when you are selling.",
+      "reopen_button": "Go back and change an answer",
+      "waitlist_button": "Email me when applications open"
     },
     {
       "card": 4,
       "heading": "Panel members buy minority stakes of $25K to $100K each.",
-      "body": "If you are not selling equity, there is nothing for this room to do. Tell us when that changes."
+      "body": "If you are not selling equity, there is nothing for this room to do. Tell us when that changes.",
+      "reopen_button": "Go back and change an answer",
+      "waitlist_button": "Email me when applications open"
     },
     {
       "card": 5,
       "heading": "The forum runs quarterly.",
-      "body": "Leave your work email and we will write when applications open for the next one."
+      "body": "Leave your work email and we will write when applications open for the next one.",
+      "reopen_button": "Go back and change an answer",
+      "waitlist_button": "Email me when applications open"
     }
   ],
   "fields": [
@@ -210,7 +228,8 @@
       "required": true,
       "micro": "The panel reads this before the forum.",
       "error": "That does not look like a LinkedIn profile. It should start with linkedin.com/in/.",
-      "autocomplete": "url"
+      "autocomplete": "url",
+      "placeholder": "https://www.linkedin.com/in/"
     },
     {
       "name": "company_name",
@@ -229,7 +248,8 @@
       "label": "Company website",
       "required": true,
       "error": "Add https:// to the front of the link.",
-      "autocomplete": "url"
+      "autocomplete": "url",
+      "placeholder": "https://"
     },
     {
       "name": "one_liner",
@@ -239,7 +259,9 @@
       "required": true,
       "micro": "Name the product and name the buyer. This is the line the panel reads first.",
       "error": "Add one sentence.",
-      "maxlength": "100"
+      "maxlength": "100",
+      "placeholder": "Grant management software for community foundations.",
+      "char_counter": 100
     },
     {
       "name": "markets_served",
@@ -305,7 +327,7 @@
         {
           "value": "",
           "text": "Pick one",
-          "placeholder": true
+          "placeholder_option": true
         },
         {
           "value": "United States",
@@ -332,7 +354,7 @@
         {
           "value": "",
           "text": "Pick a year",
-          "placeholder": true
+          "placeholder_option": true
         },
         {
           "value": "2026",
@@ -544,7 +566,8 @@
       "micro": "Round numbers are fine. The panel is reading the direction of travel.",
       "error": "Add a number, or check the box below if you were not selling yet.",
       "min": "0",
-      "disabled_by": "revenue_prior_na"
+      "disabled_by": "revenue_prior_na",
+      "derived": "revenue"
     },
     {
       "name": "revenue_prior_na",
@@ -602,7 +625,8 @@
       "required": true,
       "error": "Add a number. Enter 0 if there were none.",
       "min": "0",
-      "disabled_by": "revenue_prior_na"
+      "disabled_by": "revenue_prior_na",
+      "derived": "customers"
     },
     {
       "name": "customers_retained",
@@ -715,7 +739,9 @@
       "required": true,
       "micro": "Tip: be specific. \"More customers\" is too broad. \"Capital for two more account executives, and a renewal motion that does not depend on me\" is the right altitude.",
       "error": "Answer this question.",
-      "maxlength": "500"
+      "maxlength": "500",
+      "rows": "4",
+      "char_counter": 500
     },
     {
       "name": "introductions",
@@ -725,7 +751,9 @@
       "required": true,
       "micro": "Companies, channels, or job titles. One per line. The operators on this panel close introductions in this market every quarter.",
       "error": "Name at least one.",
-      "maxlength": "300"
+      "maxlength": "300",
+      "rows": "4",
+      "char_counter": 300
     },
     {
       "name": "other_notes",
@@ -734,7 +762,9 @@
       "label": "Anything else the panel should know?",
       "required": false,
       "micro": "If there is a number, a contract, or a risk the panel will ask about, put it here first.",
-      "maxlength": "300"
+      "maxlength": "300",
+      "rows": "4",
+      "char_counter": 300
     },
     {
       "name": "attest_accurate",
