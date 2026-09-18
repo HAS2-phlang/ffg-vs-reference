@@ -1,0 +1,715 @@
+{
+  "spec": "Foundry for Good Pitch Forum: authoritative application form specification. 33 fields, 4 steps, 5 eligibility gates.",
+  "steps": [
+    {
+      "n": 1,
+      "title": "Eligibility",
+      "intro": "Five questions. No typing. If you answer yes to all five, the application opens."
+    },
+    {
+      "n": 2,
+      "title": "You",
+      "intro": "Six short fields."
+    },
+    {
+      "n": 3,
+      "title": "The business",
+      "intro": "The panel reads every application side by side. Most of this is a number or a click."
+    },
+    {
+      "n": 4,
+      "title": "The ask",
+      "intro": "Four questions and two boxes to check. Three of the four are written answers."
+    }
+  ],
+  "hidden": [
+    "utm_source",
+    "utm_medium",
+    "utm_campaign",
+    "utm_content",
+    "referrer",
+    "landing_page",
+    "referral_id"
+  ],
+  "eligibility_gates": [
+    "is_for_profit",
+    "sells_to_sector",
+    "has_paying_customers",
+    "open_to_minority_stake",
+    "can_present_oct8"
+  ],
+  "fields": [
+    {
+      "name": "is_for_profit",
+      "step": 1,
+      "kind": "radio",
+      "label": "Is your company a for-profit business?",
+      "required": true,
+      "micro": "Foundry for Good invests in businesses that sell to nonprofits, schools, and associations. We do not invest in nonprofits.",
+      "options": [
+        {
+          "value": "Yes",
+          "text": "Yes"
+        },
+        {
+          "value": "No",
+          "text": "No",
+          "gate": true
+        }
+      ],
+      "error": "Pick one to continue."
+    },
+    {
+      "name": "sells_to_sector",
+      "step": 1,
+      "kind": "radio",
+      "label": "Do you sell your product or service to nonprofits, schools, associations, or faith-based organizations?",
+      "required": true,
+      "micro": "You do not have to sell only into this sector. You do have to sell into it today.",
+      "options": [
+        {
+          "value": "Yes",
+          "text": "Yes"
+        },
+        {
+          "value": "No",
+          "text": "No",
+          "gate": true
+        }
+      ],
+      "error": "Pick one to continue."
+    },
+    {
+      "name": "has_paying_customers",
+      "step": 1,
+      "kind": "radio",
+      "label": "Do you have paying customers using your product today?",
+      "required": true,
+      "micro": "Paying customers, not pilots and not letters of intent.",
+      "options": [
+        {
+          "value": "Yes",
+          "text": "Yes"
+        },
+        {
+          "value": "No",
+          "text": "No",
+          "gate": true
+        }
+      ],
+      "error": "Pick one to continue."
+    },
+    {
+      "name": "open_to_minority_stake",
+      "step": 1,
+      "kind": "radio",
+      "label": "Are you open to selling a minority stake in your company?",
+      "required": true,
+      "micro": "Panel members invest $25K to $100K each. Nobody at this forum is buying your company.",
+      "options": [
+        {
+          "value": "Yes",
+          "text": "Yes"
+        },
+        {
+          "value": "No",
+          "text": "No",
+          "gate": true
+        }
+      ],
+      "error": "Pick one to continue."
+    },
+    {
+      "name": "can_present_oct8",
+      "step": 1,
+      "kind": "radio",
+      "label": "The Pitch Forum is on Thursday, October 15, 2026, at 2:00pm ET on Zoom. Can a founder present live at that time?",
+      "required": true,
+      "micro": "Each slot is 10 to 15 minutes: a 5 to 10 minute presentation, then questions. You get your own slot inside that window. Selected founders receive the Zoom link at least a week before the forum.",
+      "options": [
+        {
+          "value": "Yes",
+          "text": "Yes"
+        },
+        {
+          "value": "No",
+          "text": "No",
+          "gate": true
+        }
+      ],
+      "error": "Pick one to continue."
+    },
+    {
+      "name": "contact_name",
+      "step": 2,
+      "kind": "text",
+      "label": "Your full name",
+      "required": true,
+      "error": "Add your name.",
+      "maxlength": "100",
+      "autocomplete": "name"
+    },
+    {
+      "name": "contact_title",
+      "step": 2,
+      "kind": "text",
+      "label": "Your title",
+      "required": true,
+      "micro": "Founders present at the forum. Tell us who will be on the Zoom.",
+      "error": "Add your title.",
+      "maxlength": "100",
+      "autocomplete": "organization-title"
+    },
+    {
+      "name": "work_email",
+      "step": 2,
+      "kind": "email",
+      "label": "Work email",
+      "required": true,
+      "micro": "Use your company address. The decision and the Zoom link go here.",
+      "error": "That address does not look complete. It should look like you@yourcompany.com.",
+      "autocomplete": "email"
+    },
+    {
+      "name": "linkedin_url",
+      "step": 2,
+      "kind": "url",
+      "label": "Your LinkedIn profile",
+      "required": true,
+      "micro": "The panel reads this before the forum.",
+      "error": "That does not look like a LinkedIn profile. It should start with linkedin.com/in/.",
+      "autocomplete": "url"
+    },
+    {
+      "name": "company_name",
+      "step": 2,
+      "kind": "text",
+      "label": "Company name",
+      "required": true,
+      "error": "Add your company name.",
+      "maxlength": "200",
+      "autocomplete": "organization"
+    },
+    {
+      "name": "company_website",
+      "step": 2,
+      "kind": "url",
+      "label": "Company website",
+      "required": true,
+      "error": "Add https:// to the front of the link.",
+      "autocomplete": "url"
+    },
+    {
+      "name": "one_liner",
+      "step": 3,
+      "kind": "text",
+      "label": "In one sentence, what does your company do?",
+      "required": true,
+      "micro": "Name the product and name the buyer. This is the line the panel reads first.",
+      "error": "Add one sentence.",
+      "maxlength": "100"
+    },
+    {
+      "name": "markets_served",
+      "step": 3,
+      "kind": "checkbox",
+      "label": "Who do you sell to? Select every market you sell into today.",
+      "required": false,
+      "micro": "Markets where you have paying customers today, not markets you plan to enter.",
+      "options": [
+        {
+          "value": "Nonprofits",
+          "text": "Nonprofits"
+        },
+        {
+          "value": "Schools and school districts",
+          "text": "Schools and school districts"
+        },
+        {
+          "value": "Colleges and universities",
+          "text": "Colleges and universities"
+        },
+        {
+          "value": "Associations and membership organizations",
+          "text": "Associations and membership organizations"
+        },
+        {
+          "value": "Foundations and grantmakers",
+          "text": "Foundations and grantmakers"
+        },
+        {
+          "value": "Faith-based organizations",
+          "text": "Faith-based organizations"
+        },
+        {
+          "value": "Customers outside these sectors",
+          "text": "Customers outside these sectors"
+        },
+        {
+          "value": "Other",
+          "text": "Other"
+        }
+      ],
+      "error": "Select at least one market."
+    },
+    {
+      "name": "markets_other",
+      "step": 3,
+      "kind": "text",
+      "label": "Which other market?",
+      "required": true,
+      "error": "Name the market, or uncheck Other.",
+      "maxlength": "100"
+    },
+    {
+      "name": "headquarters",
+      "step": 3,
+      "kind": "select",
+      "label": "Where is the business headquartered?",
+      "required": true,
+      "micro": "The location of your main operations, not where you are incorporated.",
+      "options": [
+        {
+          "value": "United States",
+          "text": "United States"
+        },
+        {
+          "value": "Canada",
+          "text": "Canada"
+        },
+        {
+          "value": "Elsewhere",
+          "text": "Elsewhere"
+        }
+      ],
+      "error": "Pick one."
+    },
+    {
+      "name": "first_sale_year",
+      "step": 3,
+      "kind": "select",
+      "label": "What year did you book your first paying customer?",
+      "required": true,
+      "options": [
+        {
+          "value": "2026",
+          "text": "2026"
+        },
+        {
+          "value": "2025",
+          "text": "2025"
+        },
+        {
+          "value": "2024",
+          "text": "2024"
+        },
+        {
+          "value": "2023",
+          "text": "2023"
+        },
+        {
+          "value": "2022",
+          "text": "2022"
+        },
+        {
+          "value": "2021",
+          "text": "2021"
+        },
+        {
+          "value": "2020",
+          "text": "2020"
+        },
+        {
+          "value": "2019",
+          "text": "2019"
+        },
+        {
+          "value": "2018",
+          "text": "2018"
+        },
+        {
+          "value": "2017",
+          "text": "2017"
+        },
+        {
+          "value": "2016",
+          "text": "2016"
+        },
+        {
+          "value": "2015",
+          "text": "2015"
+        },
+        {
+          "value": "2014",
+          "text": "2014"
+        },
+        {
+          "value": "2013",
+          "text": "2013"
+        },
+        {
+          "value": "2012",
+          "text": "2012"
+        },
+        {
+          "value": "2011",
+          "text": "2011"
+        },
+        {
+          "value": "2010",
+          "text": "2010"
+        },
+        {
+          "value": "2009",
+          "text": "2009"
+        },
+        {
+          "value": "2008",
+          "text": "2008"
+        },
+        {
+          "value": "2007",
+          "text": "2007"
+        },
+        {
+          "value": "2006",
+          "text": "2006"
+        },
+        {
+          "value": "2005",
+          "text": "2005"
+        },
+        {
+          "value": "2004",
+          "text": "2004"
+        },
+        {
+          "value": "2003",
+          "text": "2003"
+        },
+        {
+          "value": "2002",
+          "text": "2002"
+        },
+        {
+          "value": "2001",
+          "text": "2001"
+        },
+        {
+          "value": "2000",
+          "text": "2000"
+        },
+        {
+          "value": "1999",
+          "text": "1999"
+        },
+        {
+          "value": "1998",
+          "text": "1998"
+        },
+        {
+          "value": "1997",
+          "text": "1997"
+        },
+        {
+          "value": "1996",
+          "text": "1996"
+        },
+        {
+          "value": "1995",
+          "text": "1995"
+        },
+        {
+          "value": "1994",
+          "text": "1994"
+        },
+        {
+          "value": "1993",
+          "text": "1993"
+        },
+        {
+          "value": "1992",
+          "text": "1992"
+        },
+        {
+          "value": "1991",
+          "text": "1991"
+        },
+        {
+          "value": "1990",
+          "text": "1990"
+        },
+        {
+          "value": "1989",
+          "text": "1989"
+        },
+        {
+          "value": "1988",
+          "text": "1988"
+        },
+        {
+          "value": "1987",
+          "text": "1987"
+        },
+        {
+          "value": "1986",
+          "text": "1986"
+        },
+        {
+          "value": "1985",
+          "text": "1985"
+        },
+        {
+          "value": "1984",
+          "text": "1984"
+        },
+        {
+          "value": "1983",
+          "text": "1983"
+        },
+        {
+          "value": "1982",
+          "text": "1982"
+        },
+        {
+          "value": "1981",
+          "text": "1981"
+        },
+        {
+          "value": "1980",
+          "text": "1980"
+        }
+      ],
+      "error": "Pick a year."
+    },
+    {
+      "name": "revenue_last_12",
+      "step": 3,
+      "kind": "number",
+      "label": "What was your revenue over the last 12 months?",
+      "required": true,
+      "micro": "Two numbers, not a growth rate. We calculate the rate.",
+      "error": "Add a number. Enter 0 if there was none.",
+      "min": "0"
+    },
+    {
+      "name": "revenue_prior_12",
+      "step": 3,
+      "kind": "number",
+      "label": "What was your revenue over the 12 months before that?",
+      "required": true,
+      "micro": "Round numbers are fine. The panel is reading the direction of travel.",
+      "error": "Add a number, or check the box below if you were not selling yet.",
+      "min": "0",
+      "disabled_by": "revenue_prior_na"
+    },
+    {
+      "name": "revenue_prior_na",
+      "step": 3,
+      "kind": "checkbox",
+      "label": "We had no revenue and no customers 12 months ago",
+      "required": false
+    },
+    {
+      "name": "recurring_share",
+      "step": 3,
+      "kind": "radio",
+      "label": "Roughly what share of that revenue is contracted or recurring?",
+      "required": true,
+      "micro": "Subscriptions, licenses, and retainers count. One-time projects and implementation fees do not.",
+      "options": [
+        {
+          "value": "None. We sell projects and one-time work.",
+          "text": "None. We sell projects and one-time work."
+        },
+        {
+          "value": "Up to 25%",
+          "text": "Up to 25%"
+        },
+        {
+          "value": "26% to 50%",
+          "text": "26% to 50%"
+        },
+        {
+          "value": "51% to 75%",
+          "text": "51% to 75%"
+        },
+        {
+          "value": "More than 75%",
+          "text": "More than 75%"
+        }
+      ],
+      "error": "Pick one."
+    },
+    {
+      "name": "customers_now",
+      "step": 3,
+      "kind": "number",
+      "label": "How many customers are paying you today?",
+      "required": true,
+      "micro": "At least one. A customer who pays you on any schedule counts once.",
+      "error": "Add a number.",
+      "min": "1"
+    },
+    {
+      "name": "customers_prior_12",
+      "step": 3,
+      "kind": "number",
+      "label": "How many were paying you 12 months ago?",
+      "required": true,
+      "error": "Add a number. Enter 0 if there were none.",
+      "min": "0",
+      "disabled_by": "revenue_prior_na"
+    },
+    {
+      "name": "customers_retained",
+      "step": 3,
+      "kind": "number",
+      "label": "Of the customers you had a year ago, how many are still with you?",
+      "required": false,
+      "micro": "Count the customers from a year ago who are still paying you.",
+      "error": "Enter 0 or more.",
+      "min": "0"
+    },
+    {
+      "name": "headcount",
+      "step": 3,
+      "kind": "number",
+      "label": "How many people work on this full time, including founders?",
+      "required": true,
+      "micro": "At least one, counting yourself. Count anyone working 30 hours a week or more, wherever they are based.",
+      "error": "Add a number.",
+      "min": "1"
+    },
+    {
+      "name": "capital_raised",
+      "step": 3,
+      "kind": "radio",
+      "label": "How much outside capital have you raised to date?",
+      "required": true,
+      "options": [
+        {
+          "value": "None. We are funded by revenue.",
+          "text": "None. We are funded by revenue."
+        },
+        {
+          "value": "Under $500,000",
+          "text": "Under $500,000"
+        },
+        {
+          "value": "$500,000 to $2 million",
+          "text": "$500,000 to $2 million"
+        },
+        {
+          "value": "$2 million to $10 million",
+          "text": "$2 million to $10 million"
+        },
+        {
+          "value": "More than $10 million",
+          "text": "More than $10 million"
+        }
+      ],
+      "error": "Pick one."
+    },
+    {
+      "name": "deck_url",
+      "step": 3,
+      "kind": "url",
+      "label": "Link to your deck, one-pager, or website overview",
+      "required": true,
+      "micro": "A link anyone on the panel can open without a download, a sign-in, or an access request. A PDF link, DocSend, or Pitch all work. If you use Google Slides, set it to anyone with the link can view before you paste it. Canva, WeTransfer, and video files are not reviewed. If you are not running a raise and do not have a deck, a link to the page on your site that best explains what you sell is fine.",
+      "error": "Add https:// to the front of the link."
+    },
+    {
+      "name": "demo_url",
+      "step": 3,
+      "kind": "url",
+      "label": "Link to a product demo, if one already exists",
+      "required": true,
+      "micro": "A Loom, a recorded webinar, a conference talk, anything that already exists. Do not record something new for this.",
+      "error": "Add https:// to the front of the link."
+    },
+    {
+      "name": "raise_amount",
+      "step": 4,
+      "kind": "radio",
+      "label": "How much are you looking to raise in total?",
+      "required": true,
+      "micro": "Panel members write checks of $25K to $100K each, and more than one can come in on the same company.",
+      "options": [
+        {
+          "value": "Under $100,000",
+          "text": "Under $100,000"
+        },
+        {
+          "value": "$100,000 to $250,000",
+          "text": "$100,000 to $250,000"
+        },
+        {
+          "value": "$250,000 to $500,000",
+          "text": "$250,000 to $500,000"
+        },
+        {
+          "value": "$500,000 to $1 million",
+          "text": "$500,000 to $1 million"
+        },
+        {
+          "value": "More than $1 million",
+          "text": "More than $1 million"
+        },
+        {
+          "value": "We are not running a round. We are open to the right individual investors.",
+          "text": "We are not running a round. We are open to the right individual investors."
+        }
+      ],
+      "error": "Pick one."
+    },
+    {
+      "name": "growth_need",
+      "step": 4,
+      "kind": "textarea",
+      "label": "What does your business need to accelerate growth?",
+      "required": true,
+      "micro": "Tip: be specific. \"More customers\" is too broad. \"Capital for two more account executives, and a renewal motion that does not depend on me\" is the right altitude.",
+      "error": "Answer this question.",
+      "maxlength": "500"
+    },
+    {
+      "name": "introductions",
+      "step": 4,
+      "kind": "textarea",
+      "label": "Name up to three introductions that would change your next 12 months.",
+      "required": true,
+      "micro": "Companies, channels, or job titles. One per line. The operators on this panel close introductions in this market every quarter.",
+      "error": "Name at least one.",
+      "maxlength": "300"
+    },
+    {
+      "name": "other_notes",
+      "step": 4,
+      "kind": "textarea",
+      "label": "Anything else the panel should know?",
+      "required": false,
+      "micro": "If there is a number, a contract, or a risk the panel will ask about, put it here first.",
+      "maxlength": "300"
+    },
+    {
+      "name": "attest_accurate",
+      "step": 4,
+      "kind": "checkbox",
+      "label": "The revenue and customer figures above are actuals, not projections. *",
+      "required": true,
+      "error": "Check this box to submit."
+    },
+    {
+      "name": "attest_share",
+      "step": 4,
+      "kind": "checkbox",
+      "label": "I understand that Foundry for Good will share this application with the Pitch Forum panel.",
+      "required": true,
+      "micro": "Your answers save in this browser as you go, so you can stop and come back on this device.",
+      "error": "Check this box to submit.",
+      "disabled_by": "fieldId"
+    }
+  ]
+}
