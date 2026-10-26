@@ -52,12 +52,12 @@ When done, list anything you could not match exactly.
 ## Prompt 2: send applications to the Google Sheet (after the Apps Script is deployed)
 
 Applications go to Hugh's Google Apps Script (`HackathonApply.gs` in this folder), which saves a row in his
-Sheet, emails Hugh a branded notification and emails the applicant a copy. Replace `PASTE_EXEC_URL_HERE`
+Sheet, emails Hugh a branded notification and emails the applicant a copy. Replace `https://script.google.com/macros/s/AKfycbwwN6uw006oO_27Ytq0Wm7g8gJ3-T0QZ4Xph_p58PNqv-vQBF21RtP48UBtLG7rUnuXmA/exec`
 with the Web app URL (ends in `/exec`) before pasting.
 
 ```
 The form on /apply must send each application to this Google Apps Script web app:
-PASTE_EXEC_URL_HERE
+https://script.google.com/macros/s/AKfycbwwN6uw006oO_27Ytq0Wm7g8gJ3-T0QZ4Xph_p58PNqv-vQBF21RtP48UBtLG7rUnuXmA/exec
 
 Keep the form looking and validating exactly as it does now, and port the submit logic from the source site.js exactly:
 1. Validate like now (team fields only required when "As a team" is picked; teammate blocks only for the chosen team size).

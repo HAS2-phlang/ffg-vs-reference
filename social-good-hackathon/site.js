@@ -98,7 +98,7 @@ document.addEventListener('DOMContentLoaded', function () {
   // The hero and closer buttons pass ?as=individual or ?as=team, so the answer is already picked.
   // Hugh, Oct 26: applications post to the Google Apps Script web app (venture-hackathon/apply-collector/HackathonApply.gs),
   // which saves a row in the Sheet and emails Hugh (and the applicant a copy). Paste the /exec URL here.
-  var SUBMIT_URL = '';
+  var SUBMIT_URL = 'https://script.google.com/macros/s/AKfycbwwN6uw006oO_27Ytq0Wm7g8gJ3-T0QZ4Xph_p58PNqv-vQBF21RtP48UBtLG7rUnuXmA/exec';
   toggleCond('as', ['team'], 'cond-team');
   // Hugh, Oct 26: one block per teammate, shown up to the team size (teammate 1 is the person applying).
   function setTeammates() {
