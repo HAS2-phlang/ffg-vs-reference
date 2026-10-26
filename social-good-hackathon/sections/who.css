@@ -1,0 +1,48 @@
+/* v2 WHO: reproduces Echoing Green "Our unique selection process" (echoinggreen.org/fellowship, y 3880-4760 at 1440).
+   Measured:
+   - band: flat pastel yellow #FFF9E2, padding 95px 0 100px, no texture, no rules.
+   - title: titling-gothic-fb-condensed 800, 32px / 39px, UPPERCASE, black, centered, tight tracking.
+     -> Archivo (Google) at weight 900, font-stretch 86%, 36px, letter-spacing -0.8px (Archivo caps sit lower, so +4px to match cap height) (closest condensed heavy grotesque).
+   - lede: acumin-pro 400, 16px / 26.4px, black, centered, 550px wide, 25px under the title.
+     -> Archivo 400 at normal width (closest Google grotesque to Acumin Pro).
+   - grid: 1130px container, 3 columns of 343px, 50px gap, starts 50px under the lede.
+     We have 4 roles: 4 columns in a 1240px container (photos 280px, close to their 343px), 40px gap.
+   - photos: square corners, no border, no shadow, 343 x 245 (aspect 1.4), object-fit cover.
+   - card title: acumin 700, 23px / 33px, -0.2px, black, left aligned, 30px under the photo.
+   - card text: 16px / 26.4px, black, 10px under the title.
+   Color mapping: pastel yellow #FFF9E2 -> cream #F7F4EE; black text -> navy #16323E (titles) and #16323E body
+   (Echoing body is pure black, so body stays at full navy, not the gray body color). No accent color in the reference;
+   none added. Extra block: the "Who can apply" list, set in the same card-title + body type, two columns. */
+
+.v2-who{background:#F7F4EE;padding:95px 0 100px;color:#16323E;font-family:"Archivo",ui-sans-serif,system-ui,sans-serif;font-stretch:100%}
+.v2-who__inner{max-width:1240px;margin:0 auto;padding:0}
+.v2-who .v2-who__title{font-family:"Archivo",sans-serif;font-weight:900;font-stretch:86%;font-size:36px;line-height:42px;letter-spacing:-.8px;text-transform:uppercase;color:#16323E;text-align:center;max-width:none;margin:0 auto 25px}
+.v2-who__lede{max-width:550px;margin:0 auto;text-align:center;font-size:16px;line-height:26.4px;color:#16323E;font-weight:400}
+
+.v2-who__grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0 40px;margin-top:50px}
+.v2-who__img{aspect-ratio:343/245;overflow:hidden;background:#e6e1d8}
+.v2-who__img img{width:100%;height:100%;object-fit:cover;display:block}
+.v2-who .v2-who__h{font-family:"Archivo",sans-serif;font-stretch:100%;font-weight:700;font-size:23px;line-height:33px;letter-spacing:-.2px;color:#16323E;margin:30px 0 10px}
+.v2-who__card p{font-size:16px;line-height:26.4px;color:#16323E;margin:0}
+
+.v2-who__rules{margin:70px auto 0;max-width:1130px}
+.v2-who__rules .v2-who__h{margin-top:0;text-align:center}
+.v2-who__rules ul{list-style:none;margin:16px auto 0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 40px;max-width:740px}
+.v2-who__rules li{font-size:16px;line-height:26.4px;color:#16323E;padding:9px 0 9px 26px;position:relative;border-top:1px solid rgba(22,50,62,.14)}
+.v2-who__rules li::before{content:"";position:absolute;left:2px;top:17px;width:10px;height:10px;background:#B5502D}
+
+@media (max-width:1320px){.v2-who__inner{padding:0 40px}}
+@media (max-width:980px){.v2-who__grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:44px 32px}}
+@media (max-width:640px){
+  .v2-who{padding:64px 0 72px}
+  .v2-who__inner{padding:0 20px}
+  .v2-who .v2-who__title{font-size:28px;line-height:34px}
+  .v2-who__grid{grid-template-columns:1fr;gap:40px;margin-top:40px}
+  .v2-who .v2-who__h{margin-top:20px}
+  .v2-who__rules ul{grid-template-columns:1fr}
+}
+
+/* Rafi, Oct 23 (L72): two plain team facts above the recommended backgrounds */
+.v2-who__facts{list-style:none;margin:0 auto 22px;padding:0;display:flex;flex-wrap:wrap;justify-content:center;gap:12px;max-width:900px}
+.v2-who__facts li{padding:10px 18px;border-radius:999px;background:#16323E;color:#F7F4EE;font-family:"Archivo",sans-serif;font-weight:600;font-size:16px;line-height:22px}
+@media (max-width:640px){.v2-who__facts{padding:0 18px}.v2-who__facts li{font-size:14px;border-radius:14px;text-align:center}}

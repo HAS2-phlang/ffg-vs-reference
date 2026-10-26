@@ -1,0 +1,12 @@
+/* Page-wide scroll motion for the v2 home page (Oct 22 2026). Applies only when motion.js has run
+   and the visitor has not asked for reduced motion. Sections that run their own animation set data-own-motion. */
+.mo-bar{position:fixed;left:0;top:0;height:3px;width:100%;transform-origin:0 50%;transform:scaleX(0);background:linear-gradient(90deg,#B5502D,#E8906B);z-index:300;pointer-events:none}
+.mo-on .mo-item{opacity:0;transform:translateY(34px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1);transition-delay:var(--mo-d,0s)}
+.mo-on .mo-item.mo-in{opacity:1;transform:none}
+.mo-on .mo-img{overflow:hidden}
+.mo-on .mo-img img{transform:scale(1.08);transition:transform 1.6s cubic-bezier(.2,.7,.2,1)}
+.mo-on .mo-img.mo-in img{transform:scale(1)}
+@media (prefers-reduced-motion:reduce){
+  .mo-bar{display:none}
+  .mo-on .mo-item,.mo-on .mo-img img{opacity:1;transform:none;transition:none}
+}

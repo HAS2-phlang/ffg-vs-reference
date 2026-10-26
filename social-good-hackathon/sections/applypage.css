@@ -1,0 +1,120 @@
+/* v2 applypage  =  Fast Forward "Accelerator Updates Form" (ffwd.org/accelerator, y 2350-3450 at 1440)
+   MEASURED
+   - Two columns inside the 1236px grid (102px side margins): form panel 603px + 32px gap + photo 601px.
+   - Panel: flat tinted fill #F8F2E1, radius 40px, padding 32px. No border, no shadow.
+   - Photo: real people standing, object-fit cover, radius 40px, same height as the panel
+     (hidden under 768px on FFWD). Here it stays in view (sticky) because our form is long.
+   - Heading "owners" 400 38px / 39.9px, ls 1.52px; intro "owners-text" 18px / 22.5px, ~450px wide.
+   - Field labels: "forma-djr-mono" 600 14px / 17.5px, sentence case, 12px above the input;
+     ~21px from one input to the next label. Help text: owners-text 18px.
+   - Inputs: background text-color at 5%, 1px transparent border, radius 8px, padding 8px, 41px tall,
+     18px text. Checkboxes: 16px squares, radius 4px, 1px border at 15%, 8px to a mono 14px label,
+     ~29px rows, no card per option. First name + Last name sit side by side.
+   - Submit: pill (9999px), padding 8px 20px, 18px regular, solid brand blue, white text.
+   Fonts: Schibsted Grotesk for owners / owners-text, Space Mono 700 for forma-djr-mono.
+   COLOR MAP: panel cream #F8F2E1 -> cream #F7F4EE; near-black text -> navy #16323E;
+   field tint rgba(4,4,4,.05) -> rgba(22,50,62,.06); submit blue #1C70C4 -> orange #B5502D. */
+
+.v2-applypage{background:#fff;color:#16323E;padding:20px 0 96px;font-family:"Schibsted Grotesk",ui-sans-serif,system-ui,sans-serif}
+.v2-applypage .ap-wrap{max-width:1236px;margin:0 auto;display:grid;grid-template-columns:603fr 601fr;gap:32px;align-items:start}
+.v2-applypage .ap-panel{background:#F7F4EE;border-radius:40px;padding:32px;min-width:0}
+.v2-applypage h1{font-family:"Schibsted Grotesk",sans-serif;font-weight:400;font-size:38px;line-height:39.9px;letter-spacing:.012em;color:#16323E;margin:0 0 16px;max-width:none;text-shadow:none}
+.v2-applypage .ap-sub{font-size:18px;line-height:22.5px;color:#16323E;max-width:450px;margin:0 0 10px}
+.v2-applypage .ap-call{margin-bottom:0}
+.v2-applypage .ap-call b{font-weight:500}
+.v2-applypage .ap-photo{position:sticky;top:24px;height:min(1092px,calc(100vh - 48px));border-radius:40px;overflow:hidden}
+.v2-applypage .ap-photo img{width:100%;height:100%;object-fit:cover;object-position:50% 50%;display:block;transform:scale(1.32);transform-origin:52% 92%}
+
+/* ---- the live form, restyled to FFWD's form look ---- */
+.v2-applypage form{display:grid;grid-template-columns:1fr 1fr;column-gap:16px;margin-top:44px}
+.v2-applypage form>*{grid-column:1 / -1;min-width:0}
+.v2-applypage form>.q:nth-child(1),.v2-applypage form>.q:nth-child(2){grid-column:span 1}
+.v2-applypage form .q{background:none;border:0;border-radius:0;padding:0;margin:0 0 21px}
+.v2-applypage form .q>label,.v2-applypage form .q>.lbl{display:block;font-family:"Space Mono",ui-monospace,monospace;font-weight:700;font-size:14px;line-height:17.5px;letter-spacing:0;color:#16323E}
+.v2-applypage form .num{font-family:"Space Mono",ui-monospace,monospace;font-weight:700;color:#B5502D;margin-right:8px}
+.v2-applypage form .help{font-family:"Schibsted Grotesk",sans-serif;font-size:16px;line-height:21px;color:#4C5A61;margin-top:8px}
+.v2-applypage form .help a{color:#16323E;text-decoration:underline;text-decoration-color:rgba(22,50,62,.3);text-underline-offset:3px}
+.v2-applypage form .opt{font-family:"Schibsted Grotesk",sans-serif;font-weight:400;font-size:14px;color:#8A8580}
+.v2-applypage form input[type=text],.v2-applypage form input[type=email],.v2-applypage form input[type=url],
+.v2-applypage form textarea,.v2-applypage form select{width:100%;margin-top:12px;font-family:"Schibsted Grotesk",sans-serif;font-size:18px;line-height:22.5px;color:#16323E;padding:8px;min-height:41px;border:1px solid transparent;border-radius:8px;background:rgba(22,50,62,.06);transition:border-color .15s,background .15s}
+.v2-applypage form textarea{min-height:110px;resize:vertical}
+.v2-applypage form select{appearance:none;-webkit-appearance:none;padding-right:36px;background:rgba(22,50,62,.06) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%2316323E' stroke-width='1.6'/%3E%3C/svg%3E") no-repeat right 14px center}
+.v2-applypage form input:focus,.v2-applypage form textarea:focus,.v2-applypage form select:focus{outline:none;border-color:#B5502D;background-color:rgba(22,50,62,.03)}
+.v2-applypage form input:focus-visible,.v2-applypage form textarea:focus-visible,.v2-applypage form select:focus-visible{box-shadow:0 0 0 2px rgba(181,80,45,.35)}
+.v2-applypage form .counter{font-family:"Space Mono",ui-monospace,monospace;font-weight:700;font-size:12px;color:#8A8580;text-align:right;margin-top:6px}
+
+/* checkbox / radio lists */
+.v2-applypage .choices{display:grid;gap:11px;margin-top:14px}
+.v2-applypage .choices label,.v2-applypage .choices label:has(input:checked){display:flex;gap:8px;align-items:flex-start;padding:0;border:0;border-radius:0;background:none;cursor:pointer;font-family:"Space Mono",ui-monospace,monospace;font-weight:700;font-size:14px;line-height:17.5px;color:#16323E}
+.v2-applypage .choices label:hover{border:0}
+.v2-applypage .choices b{color:inherit;font-weight:700}
+.v2-applypage .choices input{appearance:none;-webkit-appearance:none;flex:none;width:16px;height:16px;margin:1px 0 0;border:1px solid rgba(22,50,62,.22);border-radius:4px;background:rgba(255,255,255,.55);display:grid;place-content:center;cursor:pointer;transition:background .15s,border-color .15s}
+.v2-applypage .choices input[type=radio]{border-radius:50%}
+.v2-applypage .choices input:checked{background:#B5502D;border-color:#B5502D}
+.v2-applypage .choices input[type=checkbox]:checked{background:#B5502D url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='8' viewBox='0 0 10 8'%3E%3Cpath d='M1 4l3 3 5-6' fill='none' stroke='%23fff' stroke-width='1.8'/%3E%3C/svg%3E") no-repeat center}
+.v2-applypage .choices input[type=radio]:checked{box-shadow:inset 0 0 0 3px #F7F4EE}
+.v2-applypage .choices input:focus-visible{outline:2px solid #B5502D;outline-offset:2px}
+.v2-applypage .choices label:hover input{border-color:rgba(22,50,62,.4)}
+
+/* the founder note before question 9 */
+.v2-applypage .note{background:rgba(22,50,62,.06);border:0;border-radius:8px;padding:18px 18px 20px;margin:4px 0 21px}
+.v2-applypage .note h3{font-family:"Space Mono",ui-monospace,monospace;font-weight:700;font-size:14px;line-height:17.5px;letter-spacing:0;color:#16323E;margin:0 0 10px}
+.v2-applypage .note p{font-size:16px;line-height:21px;color:#16323E}
+.v2-applypage .note p+p{margin-top:10px}
+
+/* submit */
+.v2-applypage .submit-row{margin-top:12px;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.v2-applypage .submit-row .btn{font-family:"Schibsted Grotesk",sans-serif;font-weight:400;font-size:18px;line-height:22.5px;padding:8px 20px;border-radius:9999px;background:#B5502D;color:#fff;border:0;gap:8px;transform:none}
+.v2-applypage .submit-row .btn:hover{background:#9C4426}
+.v2-applypage .submit-row .btn:focus-visible{outline:3px solid #16323E;outline-offset:3px}
+.v2-applypage .submit-row .help{font-size:14px;line-height:18px;margin:0}
+
+@media (max-width:1300px){.v2-applypage .ap-wrap{margin:0 32px}}
+@media (max-width:767px){
+  .v2-applypage{padding:16px 0 64px}
+  .v2-applypage .ap-wrap{grid-template-columns:1fr;margin:0 16px;gap:16px}
+  .v2-applypage .ap-photo{display:none}
+  .v2-applypage .ap-panel{padding:24px 18px;border-radius:28px}
+  .v2-applypage h1{font-size:30px;line-height:32px;letter-spacing:.02em}
+  .v2-applypage .ap-sub{font-size:17px;line-height:22px}
+  .v2-applypage form{grid-template-columns:1fr;margin-top:32px}
+  .v2-applypage form>.q:nth-child(1),.v2-applypage form>.q:nth-child(2){grid-column:1 / -1}
+}
+
+/* Rafi, Oct 23 (L112-L120): the team-or-individual question comes first, so first and last name are the side-by-side pair now */
+.v2-applypage form>.q:nth-child(1){grid-column:1 / -1}
+.v2-applypage form>.q:nth-child(2),.v2-applypage form>.q:nth-child(3){grid-column:span 1}
+.v2-applypage form>.cond{grid-column:1 / -1}
+.v2-applypage form>.cond.show{display:block;padding:18px 18px 0;margin:0 0 21px;border-radius:8px;background:rgba(22,50,62,.06)}
+@media (max-width:640px){.v2-applypage form>.q:nth-child(2),.v2-applypage form>.q:nth-child(3){grid-column:1 / -1}}
+/* Hugh, Oct 26: "i dont like the font". The form now uses the site's own fonts: Inter for every question,
+   choice and field (the typewriter-style Space Mono is gone), Archivo for the title, like the home page headings. */
+.v2-applypage,.v2-applypage .help,.v2-applypage form input,.v2-applypage form textarea,.v2-applypage form select,
+.v2-applypage .submit-row .btn,.v2-applypage .note p,.v2-applypage form .opt{font-family:"Inter",ui-sans-serif,system-ui,sans-serif}
+.v2-applypage h1{font-family:"Archivo",sans-serif;font-weight:800;font-stretch:90%;letter-spacing:-.8px;font-size:40px;line-height:1.05}
+.v2-applypage form .q>label,.v2-applypage form .q>.lbl,.v2-applypage .choices label,.v2-applypage .choices label:has(input:checked),
+.v2-applypage .note h3{font-family:"Inter",sans-serif;font-weight:600;font-size:16px;line-height:1.4;letter-spacing:-.1px}
+.v2-applypage .choices label,.v2-applypage .choices label:has(input:checked){font-weight:500;font-size:15.5px}
+.v2-applypage form .num{font-family:"Archivo",sans-serif;font-weight:800;font-size:16px;color:#B5502D;margin-right:8px}
+.v2-applypage form .counter{font-family:"Inter",sans-serif;font-weight:500;font-size:12.5px}
+.v2-applypage .submit-row .btn{font-weight:600}
+@media (max-width:560px){.v2-applypage h1{font-size:32px}}
+/* Hugh, Oct 26: photo 288 (2026 retreat, big group seated) beside the form; the old zoom was tuned for team.jpg */
+.v2-applypage .ap-photo img{transform:none;object-position:50% 50%}
+/* Hugh, Oct 26: font option 2 ("2 looks best"): Fraunces for the title and question numbers, DM Sans for everything else. */
+.v2-applypage,.v2-applypage .help,.v2-applypage form input,.v2-applypage form textarea,.v2-applypage form select,
+.v2-applypage .submit-row .btn,.v2-applypage .ap-sub,.v2-applypage form .opt,.v2-applypage .note p,.v2-applypage form .counter{font-family:"DM Sans",ui-sans-serif,system-ui,sans-serif}
+.v2-applypage h1{font-family:"Fraunces",Georgia,serif;font-weight:700;font-stretch:100%;letter-spacing:-.5px}
+.v2-applypage form .q>label,.v2-applypage form .q>.lbl,.v2-applypage .note h3{font-family:"DM Sans",sans-serif;font-weight:600}
+.v2-applypage .choices label,.v2-applypage .choices label:has(input:checked){font-family:"DM Sans",sans-serif;font-weight:500}
+.v2-applypage form .num{font-family:"Fraunces",Georgia,serif;font-weight:700}
+/* Hugh, Oct 26: one block per teammate on the team path */
+.v2-applypage .tm{border:0;margin:0 0 18px;padding:16px 16px 4px;border-radius:10px;background:#fff;min-width:0}
+.v2-applypage .tm[hidden]{display:none}
+.v2-applypage .tm legend{float:left;width:100%;padding:0;margin:0 0 6px;font-family:"Fraunces",Georgia,serif;font-weight:700;font-size:17px;color:#B5502D}
+.v2-applypage .tm .tm-row{display:grid;grid-template-columns:1fr 1fr;gap:0 14px;clear:both}
+.v2-applypage .tm .q{margin-bottom:12px}
+.v2-applypage .tm label{font-size:14px!important}
+.v2-applypage .tm input{margin-top:6px}
+.v2-applypage #teamsize{max-width:220px}
+@media (max-width:560px){.v2-applypage .tm .tm-row{grid-template-columns:1fr}}

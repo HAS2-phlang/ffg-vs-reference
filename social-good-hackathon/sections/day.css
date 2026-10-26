@@ -1,0 +1,112 @@
+/* v2 DAY: reproduces Hack Club Counterspell "How does a game jam work?" + rough schedule
+   (counterspell.hackclub.com, y 3050-4540 at 1440).
+   Measured:
+   - band: flat dark blue rgb(32,47,83) under a fine paper-grain noise and a soft black radial vignette.
+   - title: "retro" pixel font 30px / 36px, UPPERCASE, white, centered, padding 40px 0; key words in the brand pink.
+     -> Silkscreen (Google), 30px, closest wide uppercase bitmap face.
+   - steps box: 4px DASHED pink border, square corners, padding 32px, 24px gap, flex-wrap centered, 56px side margin.
+   - step card: 232 x 290 solid pink block, square corners, padding 16px; photo 200 x 162, square, cover;
+     caption Neuebit 20px / 24px, +0.5px tracking, white, centered, in a 96px-high box, 8px side padding.
+     -> Neuebit is not on Google Fonts: Jersey 15 (closest narrow bitmap grotesque with clear digits;
+        Pixelify Sans was tried and dropped because its 5 reads as S), 21px.
+   - lines under the box: retro 20px / 28px UPPERCASE white, centered, ~64px below the box.
+   - schedule: 800px column, Neuebit 48px / 48px, rows every 60px; name left, time right, between them a
+     4px DOTTED bottom border that grows to fill, 16px side margin, lifted 12px (sits on the baseline).
+     -> Jersey 15 at 46px, text slightly off-white to soften its heavier stroke.
+   Color mapping: blue rgb(32,47,83) -> navy #16323E (vignette -> deep navy #10262F); hot pink #FF4186 ->
+   orange #B5502D for the solid card fill (keeps white captions readable) and flame #E8906B for the dashed
+   border and highlighted words (pink on dark reads bright, flame is our bright accent on navy). White stays. */
+
+.v2-day{
+  --n:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .07 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
+  position:relative;overflow:hidden;
+  background:var(--n),radial-gradient(ellipse 60% 55% at 50% 70%,rgba(16,38,47,.85),rgba(16,38,47,0) 70%),#16323E;
+  color:#fff;padding:0 0 96px;font-family:"Jersey 15",ui-monospace,monospace;
+}
+.v2-day .v2-day__title{font-family:"Silkscreen",ui-monospace,monospace;font-weight:400;font-size:32px;line-height:38px;letter-spacing:-1px;text-transform:uppercase;color:#fff;text-align:center;max-width:none;margin:0 24px;padding:40px 0}
+.v2-day__hi{color:#E8906B}
+
+.v2-day__box{list-style:none;margin:0 56px;padding:32px;border:4px dashed #E8906B;display:flex;flex-wrap:wrap;justify-content:center;gap:24px}
+.v2-day__card{width:232px;background:#B5502D;padding:16px;display:flex;flex-direction:column}
+.v2-day__card img{width:200px;height:162px;object-fit:cover;display:block}
+.v2-day__card p{height:96px;display:flex;align-items:center;justify-content:center;text-align:center;padding:0 8px;margin:0;font-family:"Jersey 15",ui-monospace,monospace;font-size:21px;line-height:24px;letter-spacing:.5px;color:#FBF9F4;color:#fff}
+
+.v2-day__note{margin:64px auto 0;max-width:1180px;padding:0 24px;text-align:center}
+.v2-day__note p{font-family:"Silkscreen",ui-monospace,monospace;font-size:20px;line-height:28px;text-transform:uppercase;color:#fff;margin:0 0 16px}
+
+.v2-day__list{list-style:none;max-width:800px;margin:64px auto 0;padding:0}
+.v2-day__list li{display:flex;align-items:flex-end;font-size:46px;line-height:48px;letter-spacing:.3px;margin-bottom:12px;color:#E4E6E8}
+.v2-day__w,.v2-day__t{flex:none}
+.v2-day__dots{flex:1 1 auto;min-width:24px;margin:0 16px;border-bottom:4px dotted rgba(255,255,255,.9);transform:translateY(-12px)}
+
+@media (max-width:900px){
+  .v2-day__box{margin:0 16px;padding:20px}
+  .v2-day__list{padding:0 24px}
+  .v2-day__list li{font-size:34px;line-height:38px;letter-spacing:0}
+}
+@media (max-width:640px){
+  .v2-day{padding:8px 0 64px}
+  .v2-day .v2-day__title{font-size:22px;line-height:30px;padding:32px 0}
+  .v2-day__box{padding:16px;gap:16px}
+  .v2-day__card{width:100%;max-width:260px}
+  .v2-day__card img{width:100%;height:auto;aspect-ratio:200/162}
+  .v2-day__note{margin-top:44px}
+  .v2-day__note p{font-size:15px;line-height:22px}
+  .v2-day__list{margin-top:40px;padding:0 18px}
+  .v2-day__list li{font-size:25px;line-height:28px;letter-spacing:0;margin-bottom:10px}
+  .v2-day__dots{margin:0 8px;border-bottom-width:3px;transform:translateY(-7px)}
+}
+
+/* Rafi, Oct 23 (L84-L86): one short block. Longer labels and ranges, so the type steps down from 46px */
+.v2-day{padding-bottom:88px}
+.v2-day__date{font-family:"Silkscreen",ui-monospace,monospace;font-size:18px;line-height:24px;text-transform:uppercase;color:#E8906B;text-align:center;margin:-18px 0 0}
+.v2-day__list{margin-top:44px}
+.v2-day__list li{font-size:38px;line-height:42px;margin-bottom:16px}
+.v2-day__w small{display:block;font-size:22px;line-height:24px;color:#E8906B;letter-spacing:.4px}
+.v2-day__t{text-align:right}
+@media (max-width:900px){.v2-day__list li{font-size:30px;line-height:34px}.v2-day__w small{font-size:18px}}
+@media (max-width:560px){
+  .v2-day__date{font-size:14px;margin-top:-12px}
+  .v2-day__list li{font-size:22px;line-height:26px}
+  .v2-day__w small{font-size:15px;line-height:18px}
+  .v2-day__t{max-width:46%}
+}
+/* Hugh, Oct 26: schedule font option 10 ("this one's best"): Sora everywhere in the schedule, replacing the pixel fonts. */
+.v2-day .v2-day__title{font-family:"Sora",sans-serif;font-weight:800;letter-spacing:-.5px}
+.v2-day .v2-day__date{font-family:"Sora",sans-serif;font-weight:600;letter-spacing:.08em;text-transform:uppercase;font-size:15px}
+.v2-day__list li,.v2-day__w,.v2-day__w small,.v2-day__t{font-family:"Sora",sans-serif;font-weight:500}
+.v2-day__list li{font-size:32px;line-height:38px}
+.v2-day__w small{font-size:17px;line-height:22px}
+@media (max-width:900px){.v2-day__list li{font-size:26px;line-height:32px}.v2-day__w small{font-size:15px}}
+@media (max-width:560px){.v2-day__list li{font-size:19px;line-height:24px}.v2-day__w small{font-size:13px;line-height:16px}.v2-day .v2-day__date{font-size:12px}}
+@media (max-width:560px){.v2-day__list{padding:0 16px}.v2-day__list li{font-size:16px;line-height:21px}.v2-day__dots{margin:0 6px}.v2-day__t{max-width:none;white-space:nowrap}}
+@media (max-width:560px){.v2-day__w{flex:0 1 auto;min-width:0}.v2-day__dots{min-width:12px}}
+
+/* Hugh, Oct 26: the schedule is an event ticket (ticket 1 + ticket 2 merged). Sora, site palette. */
+.v2-day .tkt{display:grid;grid-template-columns:minmax(0,1fr) 150px;max-width:860px;margin:44px auto 0;background:#F7F4EE;color:#16323E;
+  border-radius:22px;overflow:hidden;box-shadow:0 22px 50px rgba(0,0,0,.32);position:relative;font-family:"Sora",sans-serif}
+.v2-day .tkt:before,.v2-day .tkt:after{content:"";position:absolute;right:137px;width:26px;height:26px;border-radius:50%;background:#16323E;z-index:2}
+.v2-day .tkt:before{top:-13px}.v2-day .tkt:after{bottom:-13px}
+.v2-day .tkt-top{background:#B5502D;color:#fff;padding:18px 28px;font-weight:700;font-size:13px;letter-spacing:.08em;text-transform:uppercase}
+.v2-day .tkt-list{list-style:none;margin:0;padding:4px 0}
+.v2-day .tkt-list li{display:grid;grid-template-columns:190px 46px 1fr;align-items:center;gap:18px;padding:14px 28px;margin:0;font-size:inherit;line-height:1.3}
+.v2-day .tkt-list li+li{border-top:1px dashed rgba(22,50,62,.22)}
+.v2-day .tkt-t{font-weight:700;font-size:16px;color:#B5502D}
+.v2-day .tkt-list b{font-size:19px;font-weight:700;color:#16323E}
+.v2-day .tkt-ib{width:46px;height:46px;border-radius:50%;background:#16323E;color:#F7F4EE;display:flex;align-items:center;justify-content:center}
+.v2-day .tkt-ic{width:22px;height:22px}
+.v2-day .tkt-stub{background:#B5502D;color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;
+  border-left:3px dashed #F7F4EE;font-weight:700;letter-spacing:.14em;text-transform:uppercase;font-size:14px}
+.v2-day .tkt-stub b{font-size:64px;letter-spacing:-2px;line-height:1}
+@media (max-width:700px){
+  .v2-day .tkt{grid-template-columns:1fr;margin:32px 16px 0}
+  .v2-day .tkt:before,.v2-day .tkt:after{display:none}
+  .v2-day .tkt-top{padding:14px 18px;font-size:11px}
+  .v2-day .tkt-list li{grid-template-columns:40px 1fr;gap:2px 12px;padding:12px 18px}
+  .v2-day .tkt-ib{grid-row:1/3;width:40px;height:40px}.v2-day .tkt-ic{width:19px;height:19px}
+  .v2-day .tkt-t{grid-column:2;grid-row:2;font-size:13px}.v2-day .tkt-list b{grid-column:2;font-size:16px}
+  .v2-day .tkt-stub{flex-direction:row;gap:12px;padding:14px;border-left:0;border-top:3px dashed #F7F4EE}.v2-day .tkt-stub b{font-size:34px}
+}
+.v2-day .v2-day__venue{display:flex;align-items:center;justify-content:center;gap:8px;text-transform:none;letter-spacing:.02em;font-size:16px}
+.v2-day .tkt-pin{width:18px;height:18px;flex:none}
+@media (max-width:560px){.v2-day .v2-day__venue{font-size:13px}}

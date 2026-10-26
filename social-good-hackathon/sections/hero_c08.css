@@ -1,0 +1,128 @@
+/* HERO c08 "Navy poster": deep navy, the brush title written huge as the headline, Anton subtitle,
+   one real photo as a full-bleed bottom strip. Fonts: Anton + Inter. Photo: ffg-gathering.jpg. */
+.hc08.hero{position:relative;display:block;min-height:0;height:auto;padding:0;text-align:left;overflow:hidden;background:#10262F;color:#F7F4EE}
+.hc08.hero::before{content:"";position:absolute;left:-10%;top:-20%;width:70%;height:120%;background:radial-gradient(ellipse at 30% 40%,rgba(181,80,45,.28),rgba(181,80,45,0) 62%);pointer-events:none}
+.hc08 .hc08-top{position:relative;z-index:2;max-width:1360px;margin:0 auto;padding:26px 40px 0;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.hc08 .hc08-logo{display:block;width:160px}
+.hc08 .hc08-logo img{width:100%;height:auto}
+.hc08 .hc08-topright{display:flex;align-items:center;gap:26px}
+.hc08 .hc08-date{font:600 13px/1 "Inter",sans-serif;letter-spacing:.22em;text-transform:uppercase;color:#E8906B}
+.hc08 .hc08-stage{position:relative;z-index:2;max-width:1360px;margin:0 auto;padding:44px 40px 56px}
+.hc08 .hc08-script{width:min(880px,100%);margin:0 0 10px -10px}
+.hc08 .script-title{width:100%;margin:0;align-items:flex-start}
+.hc08 .script-svg{transform:rotate(-3deg);transform-origin:left center;filter:none}
+#top.hc08 h1{font:400 54px/1.04 "Anton",sans-serif;text-transform:uppercase;letter-spacing:.01em;color:#F7F4EE;max-width:none;margin:34px 0 0;text-shadow:none}
+.hc08 .hc08-row{display:flex;align-items:flex-end;justify-content:space-between;gap:40px;margin-top:34px;padding-top:28px;border-top:1px solid rgba(247,244,238,.16)}
+.hc08 .hc08-sub{font:400 18px/1.55 "Inter",sans-serif;color:rgba(247,244,238,.78);max-width:48ch;margin:0}
+.hc08 .hc08-ctas{display:flex;flex-wrap:wrap;gap:14px;flex:none}
+.hc08 .hc08-strip{position:relative;height:300px;border-top:6px solid #B5502D}
+.hc08 .hc08-strip img{width:100%;height:100%;object-fit:cover;object-position:50% 58%}
+.hc08 .hc08-strip::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(16,38,47,.35),rgba(16,38,47,0) 45%)}
+.hc08 .hc08-tag{position:absolute;right:40px;bottom:24px;z-index:1;font:600 13px/1 "Inter",sans-serif;letter-spacing:.1em;text-transform:uppercase;color:#F7F4EE;background:#10262F;padding:12px 16px;border-radius:999px}
+
+@media (max-width:1080px){
+  .hc08 .hc08-top{padding:22px 28px 0}
+  .hc08 .hc08-stage{padding:36px 28px 48px}
+  #top.hc08 h1{font-size:42px}
+  .hc08 .hc08-row{flex-direction:column;align-items:flex-start;gap:26px}
+}
+@media (max-width:560px){
+  .hc08 .hc08-top{padding:18px 18px 0}
+  .hc08 .hc08-logo{width:124px}
+  .hc08 .hc08-date{font-size:10.5px;letter-spacing:.16em}
+  .hc08 .hc08-stage{padding:28px 18px 40px}
+  .hc08 .hc08-script{margin-left:-4px}
+  #top.hc08 h1{font-size:30px;margin-top:22px}
+  #top.hc08 h1 br{display:none}
+  .hc08 .hc08-row{margin-top:24px;padding-top:22px;gap:22px}
+  .hc08 .hc08-sub{font-size:16px}
+  .hc08 .hc08-ctas{width:100%;flex-direction:column;align-items:stretch}
+  .hc08 .hc08-ctas .btn{justify-content:center}
+  .hc08 .hc08-strip{height:220px}
+  .hc08 .hc08-tag{right:16px;bottom:16px;font-size:11.5px;padding:10px 13px}
+}
+
+/* Hugh, Oct 22: "a semi opaque blacked out picture" of the winners photo behind the title (no prize badge) */
+.hc08 .hc08-main{position:relative;overflow:hidden}
+.hc08 .hc08-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 38%;filter:grayscale(.35)}
+.hc08 .hc08-veil{position:absolute;inset:0;background:linear-gradient(90deg,rgba(8,18,23,.9) 0%,rgba(8,18,23,.8) 45%,rgba(8,18,23,.66) 100%)}
+.hc08.hero::before{z-index:1}
+
+/* Hugh, Oct 22: credibility sub-line and the bottom photo strip removed */
+.hc08 .hc08-row{justify-content:flex-start;border-top:0;padding-top:0}
+.hc08 .hc08-stage{padding-bottom:72px}
+
+/* date line as a quiet glass pill with a flame dot (Hugh, Oct 22: "improve this part") */
+.hc08 .hc08-date{display:inline-flex;align-items:center;gap:10px;padding:11px 18px 11px 14px;border:1px solid rgba(247,244,238,.28);border-radius:999px;background:rgba(16,38,47,.45);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);font:600 12.5px/1 "Inter",sans-serif;letter-spacing:.2em;color:#F7F4EE}
+.hc08 .hc08-date i{width:8px;height:8px;border-radius:50%;background:#E8906B;box-shadow:0 0 0 4px rgba(232,144,107,.22)}
+.hc08 .hc08-date b{color:#E8906B;font-weight:600}
+@media (max-width:560px){.hc08 .hc08-date{padding:8px 12px 8px 10px;font-size:10px;letter-spacing:.14em;gap:7px}.hc08 .hc08-date i{width:6px;height:6px}}
+
+/* Hugh, Oct 22: the brush title writes in 0.75 s, so the headline and buttons follow right after */
+.js #top.go.hc08 .h1-in{animation:rise .35s ease forwards}
+.js #top.go.hc08 .h2-in{animation:rise .35s ease .1s forwards}
+.js #top.go.hc08 .hero-after{animation:rise .5s ease 1.3s forwards}
+
+/* Oct 22: the top bar is back and carries the logo, so the hero's own logo goes; the date pill stays on the right */
+.hc08 .hc08-logo{display:none}
+.hc08 .hc08-top{justify-content:flex-end}
+
+/* Oct 22: "Set up a 1:1" dialog (Hugh) */
+.oo{border:0;padding:0;margin:auto;border-radius:18px;width:min(520px,calc(100% - 32px));max-height:calc(100% - 32px);background:#F7F4EE;color:#16323E;box-shadow:0 30px 80px -20px rgba(16,38,47,.7)}
+.oo::backdrop{background:rgba(16,38,47,.72)}
+.oo-form{position:relative;display:grid;gap:14px;padding:34px 32px 30px;font-family:Inter,system-ui,sans-serif}
+.oo-x{position:absolute;top:12px;right:14px;width:40px;height:40px;border:0;border-radius:50%;background:transparent;color:#16323E;font-size:28px;line-height:1;cursor:pointer}
+.oo-x:hover,.oo-x:focus-visible{background:#F2E0D6;outline:none}
+.oo-k{font:700 12px Archivo,sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#B5502D}
+.oo h2{font:800 32px/1.05 Archivo,sans-serif;letter-spacing:-.02em;margin:-6px 0 0;color:#16323E}
+.oo-lede{font-size:15.5px;line-height:1.5;color:#4C5A61;margin:0}
+.oo-f{display:grid;gap:6px;font-weight:600;font-size:14px}
+.oo-f input,.oo-f select{font:400 16px Inter,sans-serif;padding:12px 14px;border:1.5px solid rgba(22,50,62,.2);border-radius:10px;background:#fff;color:#16323E;width:100%}
+.oo-f input:focus,.oo-f select:focus{border-color:#B5502D;outline:2px solid rgba(181,80,45,.25)}
+.oo-days{border:0;padding:0;margin:0;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.oo-days legend{font-weight:600;font-size:14px;margin-bottom:6px}
+.oo-days label{cursor:pointer}
+.oo-days input{position:absolute;opacity:0}
+.oo-days span{display:block;text-align:center;padding:12px;border:1.5px solid rgba(22,50,62,.2);border-radius:10px;background:#fff;font-weight:600}
+.oo-days input:checked+span{background:#16323E;border-color:#16323E;color:#fff}
+.oo-days input:focus-visible+span{outline:3px solid #E8906B;outline-offset:2px}
+.oo-note{font-size:13px;color:#8A8580;margin:-4px 0 0}
+.oo-send{justify-content:center;margin-top:4px}
+.oo-sent{background:#F2E0D6;border-left:4px solid #B5502D;border-radius:0 10px 10px 0;padding:12px 14px;margin:0;font-weight:600}
+@media (max-width:560px){.oo-form{padding:30px 20px 24px}.oo h2{font-size:28px}}
+.hc08 #oo-open{background:transparent;font-family:inherit}
+.hc08 #oo-open:hover{background:rgba(255,255,255,.08)}
+.oo-ride{justify-self:start;margin:-2px 0 0;background:#F2E0D6;color:#B5502D;font:700 15px Archivo,sans-serif;padding:7px 14px;border-radius:999px}
+.oo-ridenote{font-size:13.5px;line-height:1.45;color:#B5502D;margin:-6px 0 0}
+
+/* Rafi, Oct 23 (L18, L22): the full event name sits in text directly above the brush, so the name reads the same everywhere */
+.hc08 .hc08-name{font:700 14px/1.3 "Inter",sans-serif;letter-spacing:.24em;text-transform:uppercase;color:#E8906B;margin:0 0 6px}
+@media (max-width:560px){.hc08 .hc08-name{font-size:11px;letter-spacing:.16em}}
+
+/* Hugh, Oct 26 (Rafi L100 "these should probably be higher" = the What-is explanation): a tighter hero so that
+   section's heading and first bullets show on the first screen of a 1440 x 900 laptop */
+@media (min-width:1081px){
+  .hc08 .hc08-stage{padding:24px 40px 40px}
+  .hc08 .hc08-script{width:min(760px,100%)}
+}
+.hc08 .hc08-name{margin-bottom:18px}
+@media (max-width:560px){.hc08 .hc08-name{margin-bottom:10px}}
+
+/* Hugh, Oct 26: centered hero; brush "The" centered on top of "Social Good / Hackathon", straight (no tilt) */
+.hc08 .hc08-stage{text-align:center}
+.hc08 .hc08-name{text-align:center}
+.hc08 .hc08-script{margin:0 auto 10px}
+.hc08 .script-title{align-items:center}
+.hc08 .script-svg{transform:none}
+.hc08 .hc08-row{justify-content:center}
+.hc08 .hc08-ctas{justify-content:center}
+@media (max-width:1080px){.hc08 .hc08-row{align-items:center}}
+@media (max-width:560px){.hc08 .hc08-script{margin-left:auto}}
+@media (min-width:1081px){.hc08 .hc08-script{width:min(560px,100%)}.hc08 .hc08-stage{padding-top:20px}}
+/* Hugh, Oct 26: the orange "FOUNDRY FOR GOOD" eyebrow becomes the white FFG flywheel logo */
+.hc08 .hc08-name--logo{margin:0 0 14px;line-height:0}
+.hc08 .hc08-name--logo img{display:inline-block;height:52px;width:auto}
+@media (max-width:560px){.hc08 .hc08-name--logo img{height:38px}}
+/* Hugh, Oct 26 (design d5): the date moves from the top-right pill to the center, in the same brush script as the title */
+.hc08 .hc08-when{margin:-2px 0 14px;font:400 40px/1.1 "Kaushan Script",cursive;color:#F7F4EE}
+@media (max-width:560px){.hc08 .hc08-when{font-size:26px}}

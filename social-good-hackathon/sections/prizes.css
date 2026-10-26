@@ -1,0 +1,52 @@
+/* v2-prizes: ETHGlobal Buenos Aires event page, "$500,000 Available in prizes" band (ethglobal.com/events/buenosaires).
+   SPEC (measured with inspect_ref.py at 1440):
+   - Font: Roobert (not on Google Fonts) -> Instrument Sans.
+   - Band: white, padding 128px top / 96px bottom, everything centered in a 1216px column.
+   - Total: 96px/600, line-height 96px, letter-spacing normal, color #000; 8px below it the subline 48px/400, lh 48px.
+   - Breakdown: 54px under the subline, a centered flex-wrap cloud of pills, 16px apart across and 12px down.
+     Pill: white, 1px #D1D5DB border, radius 20px, padding 8px, 58px tall; 40px round logo (4px left margin),
+     12px gap, name 14px/600 lh20, amount 14px/400 lh20, 12px right margin. Hover: scale 1.05 over 200ms.
+   - Closing button sits in the last pill row: black, 2px #0A0A0A border, radius 20px, 18px/600 lh28, padding 12px 20px, white text, arrow.
+   COLOR MAP: #000 text -> navy #16323E; black button -> navy #16323E; the many bright sponsor logos ->
+   orange #B5502D, flame #E8906B, navy #16323E (1st, 2nd, 3rd), white medal glyphs; gray borders stay gray.
+   The fine print (ours, no reference twin) uses the ETHGlobal gray-500 text style, mapped to muted #8A8580. */
+
+.v2-prizes{background:#fff; padding:128px 0 96px; color:#16323E; text-align:center;
+  font-family:"Instrument Sans",ui-sans-serif,system-ui,sans-serif; font-size:16px; line-height:24px}
+.v2-prizes *{font-family:inherit}
+.v2-prizes .eg-wrap{max-width:1280px; margin:0 auto; padding:0 32px}
+
+.v2-prizes .eg-total{font-size:96px; line-height:96px; font-weight:600; letter-spacing:-.01em; color:#16323E; margin:0 0 8px;
+  font-variant-numeric:lining-nums}
+.v2-prizes .eg-sub{font-size:48px; line-height:52px; font-weight:400; letter-spacing:-.005em; color:#16323E; margin:0 auto; max-width:none}
+.v2-prizes .eg-sub em{font:inherit; color:inherit; font-style:normal; letter-spacing:inherit}
+
+.v2-prizes .eg-pills{list-style:none; display:flex; flex-wrap:wrap; justify-content:center; align-items:center; gap:12px 16px; margin:54px auto 0; max-width:1100px; padding:0}
+.v2-prizes .eg-pill{display:flex; align-items:center; background:#fff; border:1px solid #D1D5DB; border-radius:20px; padding:8px; height:58px;
+  transition:transform .2s ease-in-out; text-align:left}
+.v2-prizes .eg-pill:hover{transform:scale(1.05)}
+.v2-prizes .eg-plogo{flex:none; width:40px; height:40px; border-radius:999px; margin-left:4px; display:grid; place-items:center}
+.v2-prizes .eg-plogo svg{width:24px; height:24px; fill:none; stroke:#fff; stroke-width:1.7; stroke-linecap:round; stroke-linejoin:round}
+.v2-prizes .eg-plogo.c1{background:#B5502D}
+.v2-prizes .eg-plogo.c2{background:#E8906B}
+.v2-prizes .eg-plogo.c3{background:#16323E}
+.v2-prizes .eg-ptxt{display:flex; flex-direction:column; margin:0 14px 0 12px}
+.v2-prizes .eg-ptxt b{font-size:14px; line-height:20px; font-weight:600; color:#16323E; white-space:nowrap}
+.v2-prizes .eg-ptxt span{font-size:14px; line-height:20px; font-weight:400; color:#16323E; white-space:nowrap}
+
+.v2-prizes .eg-btn-li{display:flex}
+.v2-prizes .eg-btn{display:inline-flex; align-items:center; gap:6px; height:56px; background:#16323E; color:#fff; border:2px solid #10262F; border-radius:20px;
+  padding:12px 20px; font-size:18px; line-height:28px; font-weight:600; text-decoration:none; letter-spacing:-.005em; transition:transform .2s ease-in-out}
+.v2-prizes .eg-btn:hover{transform:scale(1.05); background:#10262F}
+.v2-prizes a:focus-visible{outline:2px solid #B5502D; outline-offset:3px}
+
+.v2-prizes .eg-fine{max-width:620px; margin:44px auto 0; font-size:14px; line-height:20px; color:#8A8580}
+
+@media (max-width:760px){
+  .v2-prizes{padding:72px 0 64px}
+  .v2-prizes .eg-wrap{padding:0 16px}
+  .v2-prizes .eg-total{font-size:60px; line-height:60px}
+  .v2-prizes .eg-sub{font-size:30px; line-height:34px}
+  .v2-prizes .eg-pills{margin-top:36px; gap:10px}
+}
+

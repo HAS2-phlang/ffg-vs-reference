@@ -1,0 +1,45 @@
+/* v2-faq: Y Combinator FAQ page (ycombinator.com/faq).
+   SPEC (measured with inspect_ref.py at 1440):
+   - Fonts: Source Serif 4 (title, topic headings) and Outfit (menu, questions, answers). Both on Google Fonts, used as is.
+   - Background flat warm off-white #F5F5EE; text near-black rgb(22,20,15); one bright orange for the active menu link.
+   - Title: centered, Source Serif 4 500, 60px, line-height 75px (1.25), letter-spacing -1.5px, 640px wide (wraps to 2 lines),
+     about 160px of air above it, about 48px below it to the grid.
+   - Grid: 1088px centered: left menu column 224px (links 160px wide), content column 640px, empty right column.
+   - Menu: Outfit 14px/400, line-height 22.75px, letter-spacing .4px, 31px pitch (8px gap), active link orange, sticky.
+   - Topic heading: Source Serif 4 italic 500, 22.4px, lh 28px, 12px below.
+   - Question: Outfit 18px/400, lh 27px; 8px gap; answer Outfit 18px/300, lh 30.6px (1.7), margin-bottom 24px.
+     No accordions, no rules, no cards: every answer is open, plain text on the page.
+   COLOR MAP: #F5F5EE bg -> cream #F7F4EE; near-black text -> navy #16323E; YC orange (bright) -> orange #B5502D
+   (flame #E8906B is too light for 14px text on cream). */
+
+.v2-faq{background:#F7F4EE; color:#16323E; padding:128px 0 120px; font-family:"Outfit",ui-sans-serif,system-ui,sans-serif}
+.v2-faq .yc-title{font-family:"Source Serif 4",Georgia,serif; font-weight:500; font-size:60px; line-height:75px; letter-spacing:-1.5px;
+  color:#16323E; text-align:center; max-width:640px; margin:0 auto 48px; padding:0 16px; text-wrap:balance}
+.v2-faq .yc-title em{font-family:inherit; font-style:normal; font-weight:inherit; color:inherit; letter-spacing:inherit}
+
+.v2-faq .yc-grid{max-width:1088px; margin:0 auto; display:grid; grid-template-columns:224px minmax(0,640px) 1fr; align-items:start}
+.v2-faq .yc-menu{position:sticky; top:104px; display:flex; flex-direction:column; gap:8px; width:160px}
+.v2-faq .yc-menu a{display:block; font-family:"Outfit",sans-serif; font-size:14px; line-height:22.75px; letter-spacing:.4px; font-weight:400;
+  color:#16323E; text-decoration:none; transition:color .15s}
+.v2-faq .yc-menu a:hover,.v2-faq .yc-menu a.on{color:#B5502D}
+
+.v2-faq .yc-group{scroll-margin-top:104px}
+.v2-faq .yc-group+.yc-group{margin-top:54px}
+.v2-faq .yc-topic{font-family:"Source Serif 4",Georgia,serif; font-style:italic; font-weight:500; font-size:22.4px; line-height:28px;
+  letter-spacing:0; color:#16323E; margin:0 0 12px}
+.v2-faq .yc-q{font-family:"Outfit",sans-serif; font-size:18px; line-height:27px; font-weight:400; color:#16323E; letter-spacing:0; margin:0 0 8px}
+.v2-faq .yc-a{font-family:"Outfit",sans-serif; font-size:18px; line-height:30.6px; font-weight:300; color:#16323E; margin:0 0 24px; max-width:none}
+.v2-faq .yc-a:last-child{margin-bottom:0}
+.v2-faq a:focus-visible{outline:2px solid #B5502D; outline-offset:3px}
+
+@media (max-width:1100px){
+  .v2-faq .yc-grid{grid-template-columns:200px minmax(0,1fr); padding:0 32px}
+}
+@media (max-width:760px){
+  .v2-faq{padding:72px 0 72px}
+  .v2-faq .yc-title{font-size:40px; line-height:50px; letter-spacing:-1px; margin-bottom:32px}
+  .v2-faq .yc-grid{grid-template-columns:1fr; padding:0 20px}
+  .v2-faq .yc-menu{position:static; width:auto; flex-direction:row; flex-wrap:wrap; gap:6px 20px; margin:0 0 36px}
+  .v2-faq .yc-q,.v2-faq .yc-a{font-size:17px}
+  .v2-faq .yc-a{line-height:28.9px}
+}

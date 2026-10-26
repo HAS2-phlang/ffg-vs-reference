@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Apply | Foundry for Good Social Good Hackathon</title>
+<meta name="description" content="Apply to the Foundry for Good Social Good Hackathon, Saturday, January 23, 2027, in Makati.">
+<link rel="icon" href="assets/ffg-mark-orange.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&family=Lora:ital,wght@0,500;0,600;1,400;1,500;1,600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500&family=Space+Mono:wght@700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="site.css">
+<link rel="stylesheet" href="sections/applypage.css">
+<script src="site.js"></script>
+</head>
+<body>
+
+
+
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="index.html" aria-label="Foundry for Good Social Good Hackathon home">
+      <img src="assets/ffg-logo-allwhite.png" alt="Foundry for Good">
+      <span class="brand-rule" aria-hidden="true"></span>
+      <span class="brand-sub">Social Good<br>Hackathon</span>
+    </a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="index.html#about">Overview</a>
+      <a href="index.html#prizes">Prizes</a>
+      <a href="index.html#ideas">Ideas</a>
+      <a href="index.html#who">Teams</a>
+      <a href="index.html#day">Schedule</a>
+      <a href="index.html#faq">FAQ</a>
+    </nav>
+    <a class="nav-cta" href="apply.html">Apply <span aria-hidden="true">&rarr;</span></a>
+    <button class="menu-btn" aria-label="Open menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+  </div>
+  <div class="mobile-menu"><div class="wrap">
+    <a href="index.html#about">Overview</a>
+    <a href="index.html#prizes">Prizes</a>
+    <a href="index.html#ideas">Ideas</a>
+    <a href="index.html#who">Teams</a>
+    <a href="index.html#day">Schedule</a>
+    <a href="index.html#faq">FAQ</a>
+    <a class="nav-cta" href="apply.html?as=individual">Apply as an individual <span aria-hidden="true">&rarr;</span></a>
+    <a class="nav-cta" href="apply.html?as=team">Apply as a team <span aria-hidden="true">&rarr;</span></a>
+  </div></div>
+</header>
+<!-- Apply page (Fast Forward look). Rafi, Oct 23: team or individual first (L112), different answers per path (L112),
+     and only the minimum: name, email, LinkedIn, why join, idea or ours (L80-L82, L114-L120). Off the form: role (L110),
+     how you heard and how far you're coming (L118), allergies (L118), plus the founder pitch, essay, city and full-day questions.
+     The team path adds team name and teammates only; Rafi has not set its exact fields yet. -->
+<section class="v2-applypage" aria-labelledby="ap-h">
+  <div class="ap-wrap">
+    <div class="ap-panel">
+      <h1 id="ap-h">Apply to the Social Good Hackathon</h1>
+      <p class="ap-sub">Saturday, January 23, 2027</p>
+      <form id="apply-form" novalidate>
+
+        <div class="q"><span class="lbl"><span class="num">1</span>Are you applying as an individual or as a team?</span>
+          <div class="choices">
+            <label><input type="radio" name="as" value="individual" required><span>As an individual</span></label>
+            <label><input type="radio" name="as" value="team"><span>As a team</span></label>
+          </div></div>
+
+        <div class="q"><label for="first"><span class="num">2</span>First name</label>
+          <input type="text" id="first" name="first" autocomplete="given-name" required></div>
+        <div class="q"><label for="last">Last name</label>
+          <input type="text" id="last" name="last" autocomplete="family-name" required></div>
+
+        <div class="q"><label for="email"><span class="num">3</span>Email</label>
+          <input type="email" id="email" name="email" autocomplete="email" required></div>
+
+        <div class="q"><label for="linkedin"><span class="num">4</span>LinkedIn profile</label>
+          <p class="help">No LinkedIn? Paste any link that shows your work, such as a portfolio, GitHub, a school org page or a business page, or write "none".</p>
+          <input type="text" id="linkedin" name="linkedin" required></div>
+
+        <!-- Hugh, Oct 26: the team path asks how many people are on the team (up to 4, including you) and shows one block
+             per teammate: first name, last name, email and LinkedIn. You are teammate 1 (the fields above). -->
+        <div class="cond" id="cond-team">
+          <div class="q"><label for="teamname">Team name</label>
+            <input type="text" id="teamname" name="teamname"></div>
+          <div class="q"><label for="teamsize">How many people are on your team, including you?</label>
+            <select id="teamsize" name="teamsize">
+              <option value="3">3 people</option>
+              <option value="4">4 people</option>
+            </select></div>
+          <fieldset class="tm" id="tm2" data-mate="2">
+            <legend>Teammate 2</legend>
+            <div class="tm-row">
+              <div class="q"><label for="tm2-first">First name</label><input type="text" id="tm2-first" name="teammate2_first"></div>
+              <div class="q"><label for="tm2-last">Last name</label><input type="text" id="tm2-last" name="teammate2_last"></div>
+            </div>
+            <div class="q"><label for="tm2-email">Email</label><input type="email" id="tm2-email" name="teammate2_email"></div>
+            <div class="q"><label for="tm2-linkedin">LinkedIn profile</label><input type="text" id="tm2-linkedin" name="teammate2_linkedin" placeholder="Or any link that shows their work"></div>
+          </fieldset>
+          <fieldset class="tm" id="tm3" data-mate="3">
+            <legend>Teammate 3</legend>
+            <div class="tm-row">
+              <div class="q"><label for="tm3-first">First name</label><input type="text" id="tm3-first" name="teammate3_first"></div>
+              <div class="q"><label for="tm3-last">Last name</label><input type="text" id="tm3-last" name="teammate3_last"></div>
+            </div>
+            <div class="q"><label for="tm3-email">Email</label><input type="email" id="tm3-email" name="teammate3_email"></div>
+            <div class="q"><label for="tm3-linkedin">LinkedIn profile</label><input type="text" id="tm3-linkedin" name="teammate3_linkedin" placeholder="Or any link that shows their work"></div>
+          </fieldset>
+          <fieldset class="tm" id="tm4" data-mate="4">
+            <legend>Teammate 4</legend>
+            <div class="tm-row">
+              <div class="q"><label for="tm4-first">First name</label><input type="text" id="tm4-first" name="teammate4_first"></div>
+              <div class="q"><label for="tm4-last">Last name</label><input type="text" id="tm4-last" name="teammate4_last"></div>
+            </div>
+            <div class="q"><label for="tm4-email">Email</label><input type="email" id="tm4-email" name="teammate4_email"></div>
+            <div class="q"><label for="tm4-linkedin">LinkedIn profile</label><input type="text" id="tm4-linkedin" name="teammate4_linkedin" placeholder="Or any link that shows their work"></div>
+          </fieldset>
+        </div>
+
+        <div class="q"><label for="why"><span class="num">5</span>Why are you interested in joining the hackathon?</label>
+          <textarea id="why" name="why" required></textarea></div>
+
+        <div class="q"><span class="lbl"><span class="num">6</span>Do you have an idea you're excited to work on, or would you like us to give you one?</span>
+          <div class="choices">
+            <label><input type="radio" name="idea" value="own" required><span>I have an idea I'm excited to work on</span></label>
+            <label><input type="radio" name="idea" value="ours"><span>Give me one of your ideas</span></label>
+          </div>
+          <div class="cond" id="cond-idea">
+            <label for="ideatext" class="help" style="display:block;margin-top:16px">What's the idea?</label>
+            <textarea id="ideatext" name="ideatext"></textarea>
+          </div></div>
+
+        <div class="q consent"><div class="choices">
+          <label><input type="checkbox" name="privacy" required><span>I agree that Foundry for Good may use my information to review my application and contact me about the hackathon, under the Data Privacy Act of 2012.</span></label></div></div>
+
+        <div class="submit-row"><button type="submit" class="btn btn-orange">Send my application <span aria-hidden="true">&rarr;</span></button></div>
+        <div class="sent" id="sent" role="status"><b>Thanks, we got your application!</b> We'll be in touch once we've read it.</div>
+      </form>
+    </div>
+    <div class="ap-photo">
+      <img src="assets/apply-group-2026.jpg" alt="The Foundry for Good team together at the 2026 retreat" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <img src="assets/ffg-logo-allwhite.png" alt="Foundry for Good">
+        <p>The Social Good Hackathon is run by Foundry for Good.</p>
+      </div>
+      <nav aria-label="Footer">
+        <a href="apply.html">Apply</a>
+        <a href="index.html#faq">FAQ</a>
+        <a href="https://foundryforgood.com/" target="_blank" rel="noopener">Foundry for Good</a>
+        <a href="https://careers.foundryforgood.com/" target="_blank" rel="noopener">Careers</a>
+      </nav>
+    </div>
+    <div class="foot-base">&copy; 2026 Foundry for Good</div>
+  </div>
+</footer>
+</body>
+</html>

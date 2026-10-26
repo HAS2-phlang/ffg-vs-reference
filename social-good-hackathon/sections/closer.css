@@ -1,0 +1,68 @@
+/* v2 closer  =  Techstars accelerators page, "Ready to Apply" band + founder quote (y 3700-4874 at 1440)
+   MEASURED
+   - Font: Suisse Int'l (semibold headline, regular body). Google stand-ins: Inter Tight 600 (headline,
+     button), Inter 400 (body).
+   - Band: full-bleed, 460px tall, linear-gradient(135deg, #1F6F43 0%, #39C463 100%) with a faint
+     people photo washed into it. Centered stack: h2 56px / 64.4px, ls -.25px, two lines, line 1 white,
+     line 2 black; p 20px / 32px white, 760px wide; black pill button 16px weight 500, 48px tall,
+     padding 8px 22px, small material shadow.
+   - Quote block: black section, padding 128px 0; row 1200px wide: photo 480x460 radius 16px, 40px gap,
+     card 680x460 #212121 radius 16px, padding 48px, quote at top 24px / 33.6px, attribution at the
+     bottom: bold name + green "| program", 70% white role, green 600 link; two 48px round arrow
+     buttons bottom right (outline white, then solid green with black arrow).
+   - Footer follows (the live site footer, not part of this fragment).
+   COLOR MAP: green gradient #1F6F43 -> #39C463 becomes orange deep #9C4426 -> flame #E8906B (same
+   135deg); black headline line + black button -> deep navy #10262F; black section -> deep navy
+   #10262F; card #212121 -> navy #16323E; green accents -> flame #E8906B. Whites kept. */
+
+.v2-closer{font-family:"Inter",ui-sans-serif,system-ui,sans-serif;color:#fff;background:#10262F}
+.v2-closer .cl-band{position:relative;overflow:hidden;min-height:460px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#9C4426 0%,#E8906B 100%);padding:68px 24px}
+.v2-closer .cl-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.09;mix-blend-mode:luminosity;pointer-events:none}
+.v2-closer .cl-band::before{content:"";position:absolute;inset:0;background:rgba(16,38,47,.1);pointer-events:none}
+.v2-closer .cl-in{position:relative;text-align:center;max-width:800px}
+.v2-closer h2{font-family:"Inter Tight","Inter",sans-serif;font-weight:600;font-size:56px;line-height:64.4px;letter-spacing:-.25px;color:#fff;margin:0 auto;max-width:none}
+.v2-closer h2 span{display:block;color:#10262F}
+.v2-closer .cl-in>p{margin:20px auto 0;max-width:760px;font-size:20px;line-height:32px;letter-spacing:.15px;color:#fff}
+.v2-closer .cl-ctas{margin-top:24px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.v2-closer .cl-btn{display:inline-flex;align-items:center;gap:8px;height:48px;padding:0 22px;border-radius:9999px;background:#10262F;color:#fff;text-decoration:none;font-family:"Inter Tight","Inter",sans-serif;font-weight:600;font-size:16px;letter-spacing:.15px;box-shadow:0 3px 1px -2px rgba(0,0,0,.2),0 2px 2px 0 rgba(0,0,0,.14),0 1px 5px 0 rgba(0,0,0,.12);transition:background .2s}
+.v2-closer .cl-btn:hover{background:#16323E}
+.v2-closer .cl-btn-line{background:transparent;box-shadow:none;border:1px solid #fff}
+.v2-closer .cl-btn-line:hover{background:rgba(255,255,255,.12)}
+.v2-closer .cl-btn:focus-visible{outline:3px solid #fff;outline-offset:3px}
+
+.v2-closer .cl-quote{padding:128px 24px}
+.v2-closer .cl-row{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:480fr 680fr;gap:40px}
+.v2-closer .cl-photo{width:100%;height:460px;object-fit:cover;object-position:50% 50%;border-radius:16px;display:block}
+.v2-closer .cl-card{position:relative;margin:0;min-height:460px;background:#16323E;border-radius:16px;padding:48px;display:flex;flex-direction:column;justify-content:space-between;gap:24px}
+.v2-closer .cl-flag{position:absolute;top:20px;right:24px;padding:4px 10px;border:1px solid #E8906B;border-radius:9999px;font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#E8906B}
+.v2-closer blockquote{margin:0;font-size:24px;line-height:33.6px;letter-spacing:.15px;color:#fff;font-weight:400;max-width:584px}
+.v2-closer .cl-foot{display:flex;align-items:flex-end;justify-content:space-between;gap:24px}
+.v2-closer .cl-foot p{margin:0;font-size:16px;line-height:24px;letter-spacing:.15px}
+.v2-closer .cl-who b{font-weight:700;color:#fff}
+.v2-closer .cl-who span{color:#E8906B}
+.v2-closer .cl-role{color:rgba(255,255,255,.7)}
+.v2-closer .cl-note{margin-top:12px !important;font-weight:600;color:#E8906B}
+.v2-closer .cl-arrows{display:flex;gap:12px;flex:none}
+.v2-closer .cl-arrow{width:48px;height:48px;border-radius:50%;display:grid;place-items:center;border:1px solid #fff;color:#fff}
+.v2-closer .cl-arrow-on{background:#E8906B;border-color:#E8906B;color:#10262F}
+
+@media (max-width:900px){
+  .v2-closer .cl-row{grid-template-columns:1fr;gap:24px}
+  .v2-closer .cl-photo{height:auto;aspect-ratio:480/460}
+}
+@media (max-width:767px){
+  .v2-closer .cl-band{min-height:0;padding:64px 16px}
+  .v2-closer h2{font-size:36px;line-height:42px}
+  .v2-closer .cl-in>p{font-size:17px;line-height:27px}
+  .v2-closer .cl-quote{padding:72px 16px}
+  .v2-closer .cl-card{min-height:340px;padding:32px 24px}
+  .v2-closer blockquote{font-size:21px;line-height:30px}
+  .v2-closer .cl-arrows{display:none}
+  .v2-closer .cl-flag{position:static;align-self:flex-start;margin-bottom:-8px}
+}
+
+/* Rafi, Oct 23 (L48): one link to learn more about Foundry for Good, in place of the people grid */
+.v2-closer .cl-more{margin-top:26px}
+.v2-closer .cl-more a{color:#F7F4EE;font-weight:600;text-decoration:underline;text-decoration-color:rgba(247,244,238,.45);text-underline-offset:4px}
+.v2-closer .cl-more a:hover{color:#E8906B;text-decoration-color:#E8906B}
+.v2-closer .cl-more a:focus-visible{outline:2px solid #E8906B;outline-offset:3px}
