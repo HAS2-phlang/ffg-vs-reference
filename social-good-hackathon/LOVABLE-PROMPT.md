@@ -49,19 +49,28 @@ When done, list anything you could not match exactly.
 
 ---
 
-## Prompt 2: save applications
+## Prompt 2: send applications to the Google Sheet (after the Apps Script is deployed)
+
+Applications go to Hugh's Google Apps Script (`HackathonApply.gs` in this folder), which saves a row in his
+Sheet, emails Hugh a branded notification and emails the applicant a copy. Replace `PASTE_EXEC_URL_HERE`
+with the Web app URL (ends in `/exec`) before pasting.
 
 ```
-Make the application form on /apply save every submission to the database. Keep the form looking exactly the same.
+The form on /apply must send each application to this Google Apps Script web app:
+PASTE_EXEC_URL_HERE
 
-Create a table "applications" with:
-id, created_at, applying_as ("individual" or "team"), first_name, last_name, email, linkedin,
-team_name, team_size (3 or 4), teammates (JSON array of {first_name, last_name, email, linkedin}),
-why_join, idea_choice ("own" or "ours"), idea_text, privacy_consent (boolean).
-
-On submit: validate exactly like the current form (team fields only required when "As a team" is picked,
-teammate blocks only for the chosen team size), insert one row, then show the existing thank-you message.
-Anyone can submit (no login), but only project admins can read the table. No emails, no extra fields.
+Keep the form looking and validating exactly as it does now, and port the submit logic from the source site.js exactly:
+1. Validate like now (team fields only required when "As a team" is picked; teammate blocks only for the chosen team size).
+2. Build this JSON: applying_as, first, last, email, linkedin, team_name, team_size, teammates (array of {first, last, email, linkedin}
+   for teammates 2 to the team size), why, idea ("own" or "ours"), ideatext, privacy (true/false), website_url_2 (the hidden honeypot
+   field, must stay hidden and empty for people), page (the current URL), user_agent.
+3. POST it as a form-encoded body with one field named "payload" holding that JSON:
+   fetch(URL, { method: 'POST', body: new URLSearchParams({ payload: JSON.stringify(data) }) })
+   Do not set any headers and do not use mode 'no-cors' (this keeps it a simple request with no CORS preflight).
+4. While sending, the button says "Sending..." and is disabled. If the JSON reply has ok: true, disable the form,
+   set the button to "Sent" and show the existing thank-you message.
+5. If it fails, re-enable the button and show the existing error line under it.
+Do not use a database or Supabase for this, and do not add any fields.
 ```
 
 ---

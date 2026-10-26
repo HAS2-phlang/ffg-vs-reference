@@ -141,7 +141,10 @@
         <div class="q consent"><div class="choices">
           <label><input type="checkbox" name="privacy" required><span>I agree that Foundry for Good may use my information to review my application and contact me about the hackathon, under the Data Privacy Act of 2012.</span></label></div></div>
 
-        <div class="submit-row"><button type="submit" class="btn btn-orange">Send my application <span aria-hidden="true">&rarr;</span></button></div>
+        <!-- Honeypot: hidden from people, bots fill it in, and the Apps Script drops those (HackathonApply.gs). -->
+        <div style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden" aria-hidden="true"><label for="website_url_2">Leave this empty</label><input type="text" id="website_url_2" name="website_url_2" tabindex="-1" autocomplete="off"></div>
+        <div class="submit-row"><button type="submit" class="btn btn-orange" id="apply-send">Send my application <span aria-hidden="true">&rarr;</span></button></div>
+        <p class="send-error" id="send-error" role="alert" hidden>That didn't go through. Please press Send again, or email your answers to <a href="mailto:hugh.sasil@foundryforgood.com">hugh.sasil@foundryforgood.com</a>.</p>
         <div class="sent" id="sent" role="status"><b>Thanks, we got your application!</b> We'll be in touch once we've read it.</div>
       </form>
     </div>

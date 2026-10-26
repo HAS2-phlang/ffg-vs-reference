@@ -118,3 +118,4 @@
 .v2-applypage .tm input{margin-top:6px}
 .v2-applypage #teamsize{max-width:220px}
 @media (max-width:560px){.v2-applypage .tm .tm-row{grid-template-columns:1fr}}
+.v2-applypage .send-error{margin:12px 0 0;font-size:15px;line-height:22px;color:#9C4426}.v2-applypage .send-error a{color:#B5502D}

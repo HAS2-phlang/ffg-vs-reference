@@ -26,4 +26,4 @@ Fonts load from Google Fonts in each page's `<head>` (Archivo, Inter, Lora, Anto
 - Copy is approved: keep every word exactly as written. Do not add sections, stats, testimonials or "learn more" blocks.
 - Keep the layout, colors, fonts, photos and icons exactly. Palette: navy `#16323E`, deep navy `#10262F`, orange `#B5502D`, flame `#E8906B`, cream `#F7F4EE`.
 - The Schedule says "Venue: TBD" and the Overview says "A coworking space in Makati" until a venue is booked.
-- The application form must save to a database (see the prompt). Team applications send one block per teammate (first name, last name, email, LinkedIn).
+- The application form posts to Hugh's Google Apps Script (`HackathonApply.gs`, set as SUBMIT_URL in site.js), which saves a Sheet row and sends the emails. Team applications send one block per teammate (first name, last name, email, LinkedIn).

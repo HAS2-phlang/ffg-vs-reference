@@ -96,6 +96,9 @@ document.addEventListener('DOMContentLoaded', function () {
   }
   // Rafi, Oct 23 (L112): team or individual is the first answer; the team path adds team name and teammates.
   // The hero and closer buttons pass ?as=individual or ?as=team, so the answer is already picked.
+  // Hugh, Oct 26: applications post to the Google Apps Script web app (venture-hackathon/apply-collector/HackathonApply.gs),
+  // which saves a row in the Sheet and emails Hugh (and the applicant a copy). Paste the /exec URL here.
+  var SUBMIT_URL = '';
   toggleCond('as', ['team'], 'cond-team');
   // Hugh, Oct 26: one block per teammate, shown up to the team size (teammate 1 is the person applying).
   function setTeammates() {
@@ -125,7 +128,37 @@ document.addEventListener('DOMContentLoaded', function () {
     var idea = form.querySelector('input[name="idea"]:checked');
     document.getElementById('ideatext').required = !!(idea && idea.value === 'own');
     if (!form.reportValidity()) return;
-    document.getElementById('sent').classList.add('show');
-    document.getElementById('sent').scrollIntoView({ behavior: 'smooth', block: 'center' });
+    var sentBox = document.getElementById('sent');
+    var showSent = function () { sentBox.classList.add('show'); sentBox.scrollIntoView({ behavior: 'smooth', block: 'center' }); };
+    // Local preview (no SUBMIT_URL yet): show the thank-you without sending anything.
+    if (!SUBMIT_URL) { showSent(); return; }
+    var v = function (id) { var el = document.getElementById(id); return el ? el.value.trim() : ''; };
+    var picked = function (name) { var r = form.querySelector('input[name="' + name + '"]:checked'); return r ? r.value : ''; };
+    var asTeam = picked('as') === 'team';
+    var size = asTeam ? parseInt(v('teamsize') || '3', 10) : 1;
+    var mates = [];
+    for (var n = 2; asTeam && n <= size; n++) {
+      mates.push({ first: v('tm' + n + '-first'), last: v('tm' + n + '-last'), email: v('tm' + n + '-email'), linkedin: v('tm' + n + '-linkedin') });
+    }
+    var payload = {
+      applying_as: picked('as'), first: v('first'), last: v('last'), email: v('email'), linkedin: v('linkedin'),
+      team_name: asTeam ? v('teamname') : '', team_size: asTeam ? String(size) : '', teammates: mates,
+      why: v('why'), idea: picked('idea'), ideatext: picked('idea') === 'own' ? v('ideatext') : '',
+      privacy: !!(form.querySelector('input[name="privacy"]') || {}).checked,
+      website_url_2: v('website_url_2'), page: location.href, user_agent: navigator.userAgent
+    };
+    var btn = document.getElementById('apply-send'), err = document.getElementById('send-error');
+    var label = btn.innerHTML;
+    btn.disabled = true; btn.textContent = 'Sending...'; err.hidden = true;
+    // A form-encoded body keeps this a simple request, so Apps Script needs no CORS preflight (same as the Pitch Forum form).
+    fetch(SUBMIT_URL, { method: 'POST', body: new URLSearchParams({ payload: JSON.stringify(payload) }) })
+      .then(function (r) { return r.json(); })
+      .then(function (res) {
+        if (!res || !res.ok) throw new Error('not ok');
+        form.querySelectorAll('input, textarea, select, button').forEach(function (el) { el.disabled = true; });
+        btn.innerHTML = 'Sent';
+        showSent();
+      })
+      .catch(function () { btn.disabled = false; btn.innerHTML = label; err.hidden = false; });
   });
 });
