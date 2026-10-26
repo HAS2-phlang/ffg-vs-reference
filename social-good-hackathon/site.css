@@ -314,3 +314,14 @@ footer{background:var(--navy-deep);color:rgba(247,244,238,.7);padding:56px 0 40p
   #top .hero-ctas .btn{justify-content:center}
   .hero-perks{font-size:13px}
 }
+
+/* Hugh, Oct 26: top bar copied from the Venture Studio site (.topbar/.tb-btn) so both sites share the same chrome */
+.topbar{background:#10262F;font-family:"Inter",ui-sans-serif,system-ui,sans-serif;border-bottom:1px solid rgba(247,244,238,.1)}
+.topbar-inner{display:flex;justify-content:space-between;align-items:center;gap:12px;min-height:44px;padding-top:7px;padding-bottom:7px}
+.topbar-right{display:flex;flex-wrap:wrap;justify-content:flex-end;align-items:center;gap:8px}
+.topbar .tb-btn{display:inline-flex;align-items:center;gap:6px;padding:8px 16px;border:1px solid rgba(247,244,238,.24);border-radius:999px;background:none;
+  color:rgba(247,244,238,.86);font:600 12px/1 "Inter",ui-sans-serif,system-ui,sans-serif;letter-spacing:.02em;white-space:nowrap;text-decoration:none;
+  transition:background .15s,color .15s,border-color .15s}
+.topbar .tb-btn:hover{color:#16323E;background:#fff;border-color:#fff}
+.topbar .tb-btn .ar{transition:transform .18s}.topbar .tb-btn:hover .ar{transform:translateX(-3px)}
+@media (max-width:720px){.topbar .tb-hide{display:none}}
