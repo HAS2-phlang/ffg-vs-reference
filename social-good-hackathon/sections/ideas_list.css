@@ -17,3 +17,5 @@
 .pg .own.own-tiles .ownin{position:relative;z-index:3;display:flex;align-items:center;gap:12px;color:#E8906B;padding:16px 30px;border:2px dashed #E8906B;border-radius:999px;background:rgba(16,38,47,.92);box-shadow:0 10px 30px rgba(0,0,0,.35)}
 .pg .own.own-tiles .ownin p{margin:0;color:#E8906B;font-weight:700;font-size:19px}
 @media(max-width:700px){.own-tiles .m7{grid-template-columns:repeat(6,1fr);gap:8px}.pg .own.own-tiles{min-height:200px}.pg .own.own-tiles .ownin{padding:12px 20px}.pg .own.own-tiles .ownin p{font-size:16px}}
+/* Oct 27: on phones the caption stacks so long words ("sponsorships" on card 06) stay inside the frosted box */
+@media(max-width:800px){.p5 .glass{flex-direction:column;align-items:flex-start;gap:2px;padding:10px 12px;left:8px;right:8px;bottom:8px}.p5 .n{font-size:20px}.p5 p{font-size:14px;overflow-wrap:break-word}}
